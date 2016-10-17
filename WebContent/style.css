@@ -34,8 +34,8 @@ body {
 /*Header*/
 
 #header{
-	height:242px;
-	background:url(images/header.jpg) no-repeat left top;
+	height:189px;
+	background:url(images/Header.png) no-repeat left top;
 	clear: both;
 }
 /*Header Menu*/
@@ -131,9 +131,6 @@ h1, h2, h3, h4, h5 {
 	display:block; 
 	padding:0px; 
 	border-bottom: dashed 1px #D6E4A7;}
-
-
-
 
 /*Sidebar*/
 #sidebar {
