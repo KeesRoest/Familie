@@ -8,7 +8,8 @@ function overOns() {
 	      document.getElementById("mainpage").innerHTML = this.responseText;
 	    }
 	  };
-	  xhttp.open("GET", "overOns.html", true);
+	  xhttp.open("GET", "rest/HelloWorld/sayHello", true);
+//	  xhttp.open("GET", "overOns.html", true);
 	  xhttp.send();
 	}
 
