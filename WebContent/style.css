@@ -24,7 +24,7 @@ body {
 	background: #FFFFFF  url(images/bg.jpg) repeat-x;
 	}
 #wrap{
-	width:699px;
+	width: 75%;
 	margin:0px auto 15px auto;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:12px;
