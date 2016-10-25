@@ -49,6 +49,7 @@ function namenLijst() {
 //	  xhttp.open("GET", "namenLijst.json", true);
 	  xhttp.send();
 	}
+
 function persGeg() {
 	  activeMenuItem("persoonsgegevens")
 	  var xhttp = new XMLHttpRequest();
@@ -60,6 +61,7 @@ function persGeg() {
 	  xhttp.open("GET", "persGeg.html", true);
 	  xhttp.send();
 	}
+
 function test() {
 	 if(document.naam.tekstregel.value == "") { 
 		 window.alert("Jammer, even een tekstje invullen -.-'") 
@@ -67,3 +69,45 @@ function test() {
 		 window.alert(document.naam.tekstregel.value) 
 		 }
  }
+
+function checkPersGeg(id) {
+	switch (id) {
+    case "doopnaam":
+		var x = document.getElementById(id);
+//		x.value = x.value.toUpperCase();
+        break;
+    case 1:
+        day = "Monday";
+        break;
+    case 2:
+        day = "Tuesday";
+        break;
+    case 3:
+        day = "Wednesday";
+        break;
+    case 4:
+        day = "Thursday";
+        break;
+    case 5:
+        day = "Friday";
+        break;
+    case 6:
+        day = "Saturday";
+	}
+}
+function setPersGeg() {
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    	var json = JSON.parse(this.responseText)
+	      var text = ""
+	      for (var i = 0; i < json.length; i++) {
+	        text += "<p>" + json[i].firstName + " " + json[i].lastName + "</p>"
+	      }
+	    document.getElementById("mainpage").innerHTML = text;
+	    }
+	  };
+	  xhttp.open("SET", "rest/person", true);
+
+	  xhttp.send();
+	}
