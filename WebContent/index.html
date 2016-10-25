@@ -7,22 +7,22 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
+<body onload="home()">
 <div class="style3"></div><div class="style_2"><span class="style3"><a href="http://localhost:8080/Familie" title="Familie"><strong>Familie</strong></a></span></div>
 <div id="wrap">
 <div id="topbar">
   <h1 id="sitename"><a href="http://localhost:8080/Familie">Familie</a></h1>
   <div id="menus">
   <ul id="topmenu">
-<li  class="active"><a href="index.html">Home</a>
+<li  id="home"       class="active"   ><a href="#" onclick="home()">Home</a>
 </li>
-<li><a href="#" onclick="overOns()">Over ons</a>
+<li  id="overons"    class="inactive" ><a href="#" onclick="overOns()">Over ons</a>
 </li>
-<li><a href="#" onclick="namenLijst()">Lijst met namen</a>
+<li  id="namenlijst" class="inactive" ><a href="#" onclick="namenLijst()">Lijst met namen</a>
 </li>
-<li><a href="#">Menu 2</a>
+<li  class="inactive"><a href="#">Menu 2</a>
 </li>
-<li><a href="#">Menu 3</a>
+<li  class="inactive"><a href="#">Menu 3</a>
 </li>
 </ul>
 </div>
@@ -32,8 +32,6 @@
 </div>
 <div id="content">
 <div id="mainpage">
-<h2>Welkom bij deze familiewebsite!</h2>
-<p>Zonnebank en zonnestudios is a Small Businesses Website. After designing your site, we also submit  it major search engines and take due care to list them in relevant directories  and press releases.</p>
 </div>
 <div id="sidebar">
 <div id="sidebarcontents"> 

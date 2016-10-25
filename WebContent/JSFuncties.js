@@ -1,7 +1,26 @@
 /**
  * 
  */
+function activeMenuItem(menuItem) {
+    var x = document.getElementById("topmenu").getElementsByClassName("active");
+    x[0].className = "inactive";
+    document.getElementById(menuItem).className = "active";
+}
+
+function home() {
+	  activeMenuItem("home")
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	      document.getElementById("mainpage").innerHTML = this.responseText;
+	    }
+	  };
+	  xhttp.open("GET", "home.html", true);
+	  xhttp.send();
+	}
+
 function overOns() {
+	  activeMenuItem("overons")
 	  var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
@@ -14,6 +33,7 @@ function overOns() {
 	}
 
 function namenLijst() {
+	  activeMenuItem("namenlijst")
 	  var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
