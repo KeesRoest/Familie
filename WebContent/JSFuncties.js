@@ -40,7 +40,7 @@ function namenLijst() {
 	    	var json = JSON.parse(this.responseText)
 	      var text = ""
 	      for (var i = 0; i < json.length; i++) {
-	        text += "<p>" + json[i].firstName + " " + json[i].lastName + "</p>"
+	        text += '<a href="#">' + i + " " + json[i].firstName + " " + json[i].lastName + "</a><br>"
 	      }
 	    document.getElementById("mainpage").innerHTML = text;
 	    }
