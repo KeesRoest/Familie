@@ -3,9 +3,8 @@
 	<persistence-unit name="Familie">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jboss/datasources/java8databaseDS</jta-data-source>
+		<class>pojo.Person</class>
   		<properties>
-			<property name="javax.persistence.schema-generation.database.action"
-				value="drop-and-create" />
 			<property name="javax.persistence.schema-generation.create-source"
 				value="metadata" />
 			<property name="javax.persistence.schema-generation.drop-source"
@@ -14,6 +13,7 @@
 			<property name="hibernate.format_sql" value="true" />
   		
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 		</properties>
 	</persistence-unit>
 </persistence>

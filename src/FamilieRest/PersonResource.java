@@ -1,20 +1,28 @@
 package FamilieRest;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
 
 import pojo.Person;
 
+import service.PersonService;
 
 
 @Path("/person")
 public class PersonResource {
 
+	@Inject
+	private PersonService personService;
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Person> getPersons() {
@@ -22,5 +30,13 @@ public class PersonResource {
 		personList.add(new Person("Donald", "Duck"));
 		personList.add(new Person("Koning", "Willem-Alexander"));
 		return personList;
+	}
+
+    @POST
+	@Path("/1")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void addPerson(Person person) {
+		personService.addPerson(person);
+		System.out.println("Added a person with firstname " + person.getFirstName() + " and with lastname " + person.getLastName());
 	}
 }

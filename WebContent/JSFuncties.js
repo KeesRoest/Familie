@@ -62,14 +62,6 @@ function persGeg() {
 	  xhttp.send();
 	}
 
-function test() {
-	 if(document.naam.tekstregel.value == "") { 
-		 window.alert("Jammer, even een tekstje invullen -.-'") 
-		 }else{ 
-		 window.alert(document.naam.tekstregel.value) 
-		 }
- }
-
 function checkPersGeg(id) {
 	switch (id) {
     case "doopnaam":
@@ -95,7 +87,9 @@ function checkPersGeg(id) {
         day = "Saturday";
 	}
 }
-function setPersGeg() {
+function setPersgeg() {
+	  var firstName = document.getElementById("roepnaam").value;
+	  var lastName = document.getElementById("achternaam").value;
 	  var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
@@ -107,7 +101,7 @@ function setPersGeg() {
 	    document.getElementById("mainpage").innerHTML = text;
 	    }
 	  };
-	  xhttp.open("SET", "rest/person", true);
-
-	  xhttp.send();
+	  xhttp.open("POST", "rest/person/1", true);
+	  xhttp.setRequestHeader("Content-Type", "application/json");
+	  xhttp.send(JSON.stringify({firstName:firstName, lastName:lastName}));
 	}
