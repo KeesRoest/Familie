@@ -17,30 +17,30 @@ public class Person implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String firstName;
-	private String lastName;
+	private String voornaam;
+	private String achternaam;
 	
 	public Person() {}
 	
-	public Person(String aFirstName, String aLastName) {
-		setFirstName(aFirstName);
-		setLastName(aLastName);
+	public Person(String aVoornaam, String aAchternaam) {
+		setVoornaam(aVoornaam);
+		setAchternaam(aAchternaam);
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getVoornaam() {
+		return voornaam;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setVoornaam(String voornaam) {
+		this.voornaam = voornaam;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getAchternaam() {
+		return achternaam;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setAchternaam(String achternaam) {
+		this.achternaam = achternaam;
 	}
 
 	public Long getId() {

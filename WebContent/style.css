@@ -24,7 +24,7 @@ body {
 	background: #FFFFFF  url(images/bg.jpg) repeat-x;
 	}
 #wrap{
-	width: 75%;
+	width: 80%;
 	margin:0px auto 15px auto;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:12px;
@@ -204,3 +204,6 @@ h1, h2, h3, h4, h5 {
 	padding-left:100px;
 	padding-top:25px;
 	}
+td.capitalize {
+    text-transform: capitalize;	
+}
