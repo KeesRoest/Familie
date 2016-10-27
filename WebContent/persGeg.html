@@ -2,8 +2,8 @@
 <form name="naam">
 	<br>
 	<table style="width:100%">
-		<tr><td>Geslacht</td><td><select autofocus><option value="man">Man</option><option value="vrouw">Vrouw</option></select></td></tr>
-		<tr><td>Doopnaam</td><td><input 		type="text"		name="doopnaam"			maxlength="50"	size="50" id="doopnaam" onchange=checkPersGeg("doopnaam")></td></tr>
+		<tr><td style="width:25%">Geslacht</td><td style="width:50%"><select autofocus><option value="man">Man</option><option value="vrouw">Vrouw</option></select></td></tr>
+		<tr><td style="width:25%">Doopnaam</td><td style="width:50%"><input 		type="text"		name="doopnaam"			maxlength="50"	size="50" id="doopnaam" onblur="checkPersGeg(id)"></td><td style="width:25% color:red" id="foutDoopnaam"></td></tr>
 		<tr><td>Roepnaam</td><td><input 		type="text"		name="roepnaam" 		maxlength="15"	size="15" id="roepnaam"></td></tr>
 		<tr><td>Tussenvoegsel</td><td><input 	type="text" 	name="tussenvoegsel"	maxlength="15" 	size="15"></td></tr>
 		<tr><td>Achternaam</td><td><input 		type="text"		name="achternaam" 		maxlength="50"	size="50" id="achternaam"></td></tr>

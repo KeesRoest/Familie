@@ -78,9 +78,14 @@ function persGeg() {
 function checkPersGeg(id) {
 	switch (id) {
     case "doopnaam":
+    	document.getElementById("foutDoopnaam").innerHTML = "";
+
+    	var y = document.getElementById(id).value;
+		if (y == null | y == ""){document.getElementById("foutDoopnaam").innerHTML = "Doopnaam invullen s.v.p.";break}
+
 		var x = document.getElementById(id);
-//		x.value = x.value.toUpperCase();
-        break;
+		x.value = x.value.toUpperCase().trim();
+		break;
     case 1:
         day = "Monday";
         break;
