@@ -21,7 +21,13 @@ public class PersonService {
 		personDAO.savePerson(person);
 	}
 
-	public List<Person> getPersons(List<Person> person) {
+	public List<Person> getPersons() {
+		List<Person> persons = personDAO.getPersons();
+		return persons;
+	}
+
+	public Person getPerson(Long id) {
+		Person person = personDAO.getPerson(id);
 		return person;
 	}
 
