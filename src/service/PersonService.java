@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import javax.inject.Inject;
@@ -18,4 +20,9 @@ public class PersonService {
 	public void addPerson(Person person) {
 		personDAO.savePerson(person);
 	}
+
+	public List<Person> getPersons(List<Person> person) {
+		return person;
+	}
+
 }

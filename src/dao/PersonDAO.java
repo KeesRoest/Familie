@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import javax.persistence.EntityManager;
@@ -17,4 +19,8 @@ public class PersonDAO {
 		em.persist(person);
 	}
 	
+	public List<Person> getPersons() {
+		List<Person> resultList = em.createQuery("SELECT p FROM Person p", Person.class).getResultList();
+		return resultList;
+	}
 }
