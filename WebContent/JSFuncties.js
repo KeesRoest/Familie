@@ -40,7 +40,7 @@ function namenLijst() {
 	    	var json = JSON.parse(this.responseText)
 	      var text = ""
 	      for (var i = 0; i < json.length; i++) {
-	        text += '<a href="#" onclick="persoon(' + json[i].id + ')"' + '>'  + json[i].firstName + " " + json[i].lastName + "</a><br>";
+	        text += '<a href="#" onclick="persoon(' + json[i].id + ')"' + '>'  + json[i].voornaam + " " + json[i].achternaam + "</a><br>";
 	      }
 	    document.getElementById("mainpage").innerHTML = text;
 	    }
@@ -55,7 +55,7 @@ function persoon(id) {
 	xhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
 		var json = JSON.parse(this.responseText);
-		var text = "<p>" + json.id + ' '  + json.firstName + " " + json.lastName + "</p>";
+		var text = "<p>" + json.id + ' '  + json.voornaam + " " + json.achternaam + "</p>";
 	    document.getElementById("mainpage").innerHTML = text;
 	}
   }
