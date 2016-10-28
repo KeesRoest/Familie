@@ -40,7 +40,7 @@ function namenLijst() {
 	    	var json = JSON.parse(this.responseText)
 	      var text = ""
 	      for (var i = 0; i < json.length; i++) {
-	        text += '<a href="#" onclick="persoon(' + json[i].id + ')"' + '>'  + json[i].voornaam + " " + json[i].achternaam + "</a><br>";
+	        text += '<a href="#" onclick="persoon(' + json[i].id + ')"' + '>'  + json[i].roepnaam + " " + json[i].achternaam + "</a><br>";
 	      }
 	    document.getElementById("mainpage").innerHTML = text;
 	    }
@@ -55,7 +55,7 @@ function persoon(id) {
 	xhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
 		var json = JSON.parse(this.responseText);
-		var text = "<p>" + json.id + ' '  + json.voornaam + " " + json.achternaam + "</p>";
+		var text = "<p>" + json.id + ' '  + json.roepnaam + " " + json.achternaam + "</p>";
 	    document.getElementById("mainpage").innerHTML = text;
 	}
   }
@@ -78,10 +78,11 @@ function persGeg() {
 function checkPersGeg(id) {
 	switch (id) {
     case "doopnaam":
+    	alert("doopnaam");
     	document.getElementById("foutDoopnaam").innerHTML = "";
-    	var y = document.getElementById(id).value;
+    	var y = document.getElementById(id).value.trim();
 		if (y == null | y == ""){document.getElementById("foutDoopnaam").innerHTML = "Doopnaam invullen s.v.p.";break}
-
+		alert("y:'" + y + "'");
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
 		document.getElementById(id).style.textTransform = "capitalize"
@@ -180,13 +181,14 @@ function checkPersGeg(id) {
     	document.getElementById("foutGeboortedatum").innerHTML = "";
     	var y = document.getElementById(id).value;
 		if (y == null | y == ""){document.getElementById("foutGeboortedatum").innerHTML = "Geboortedatum invullen s.v.p.";break}
-		y.alert()
+
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
 		break;
     case "geboorteplaats":
     	document.getElementById("foutGeboorteplaats").innerHTML = "";
     	var y = document.getElementById(id).value;
+    	alert("y:'" + y + "'");
 		if (y == null | y == ""){document.getElementById("foutGeboorteplaats").innerHTML = "Geboorteplaats invullen s.v.p.";break}
 
 		var x = document.getElementById(id);
@@ -227,37 +229,45 @@ function checkPersGeg(id) {
 		break;
 	}
 }
+function controlePersgeg(){
+	alert("controle");
+	checkPersGeg("doopnaam");
+	return true
+}
 function setPersgeg() {
-	  var geslacht = document.getElementById("geslacht").value;
-	  var doopnaam = document.getElementById("doopnaam").value;
-	  var roepnaam = document.getElementById("roepnaam").value;
-	  var tussenvoegsel = document.getElementById("tussenvoegsel").value;
-	  var achternaam = document.getElementById("achternaam").value;
-	  var straatnaam = document.getElementById("straatnaam").value;
-	  var huisnr = document.getElementById("huisnr").value;
-	  var huisnrtoev = document.getElementById("huisnrtoev").value;
-	  var postcode = document.getElementById("postcode").value;
-	  var plaatsnaam = document.getElementById("plaatsnaam").value;
-	  var staat = document.getElementById("staat").value;
-	  var land = document.getElementById("land").value;
-	  var telefoon = document.getElementById("telefoon").value;
-	  var geboortedatum = document.getElementById("geboortedatum").value;
-	  var geboorteplaats = document.getElementById("geboorteplaats").value;
-	  var overlijdensdatum = document.getElementById("overlijdensdatum").value;
-	  var email = document.getElementById("email").value;
-	  var wachtwoord = document.getElementById("wachtwoord").value;
-	  var xhttp = new XMLHttpRequest();
-	  xhttp.onreadystatechange = function() {
-		  if (this.readyState == 4 && this.status == 200) {
-			  var json = JSON.parse(this.responseText)
-			  var text = ""
-				  for (var i = 0; i < json.length; i++) {
-					  text += "<p>" + json[i].geslacht + " " + json[i].doopnaam + " " + json[i].roepnaam + " " + json[i].tussenvoegsel + " " + json[i].achternaam + " " + json[i].straatnaam + " " + json[i].huisnr + " " + json[i].huisnrtoev + " " + json[i].postcode + " " + json[i].plaatsnaam + " " + json[i].staat + " " + json[i].land + "</p>"
-				  }
-			  document.getElementById("mainpage").innerHTML = text;
-		  }
-	  };
-	  xhttp.open("POST", "rest/person/add", true);
-	  xhttp.setRequestHeader("Content-Type", "application/json");
-	  xhttp.send(JSON.stringify({geslacht:geslacht, doopnaam:doopnaam, roepnaam:roepnaam, tussenvoegsel:tussenvoegsel, achternaam:achternaam, straatnaam:straatnaam, huisnr:huisnr, huisnrtoev:huisnrtoev, postcode:postcode, plaatsnaam:plaatsnaam, staat:staat, land:land}));
-	}
+	if (controlePersgeg() == true) {};
+	var geslacht = document.getElementById("geslacht").value;
+	var doopnaam = document.getElementById("doopnaam").value;
+	var roepnaam = document.getElementById("roepnaam").value;
+	var tussenvoegsel = document.getElementById("tussenvoegsel").value;
+	var achternaam = document.getElementById("achternaam").value;
+	var straatnaam = document.getElementById("straatnaam").value;
+	var huisnr = document.getElementById("huisnr").value;
+	var huisnrtoev = document.getElementById("huisnrtoev").value;
+	var postcode = document.getElementById("postcode").value;
+	var plaatsnaam = document.getElementById("plaatsnaam").value;
+	var staat = document.getElementById("staat").value;
+	var land = document.getElementById("land").value;
+	var telefoon = document.getElementById("telefoon").value;
+	var geboortedatum = document.getElementById("geboortedatum").value;
+	var geboorteplaats = document.getElementById("geboorteplaats").value;
+	var overlijdensdatum = document.getElementById("overlijdensdatum").value;
+	var email = document.getElementById("email").value;
+	var password = document.getElementById("password").value;
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var json = JSON.parse(this.responseText)
+			var text = ""
+				for (var i = 0; i < json.length; i++) {
+					text += "<p>" + json[i].geslacht + " " +   json[i].doopnaam + " " +   json[i].roepnaam + " " + json[i].tussenvoegsel + " " + 
+					  				json[i].achternaam + " " + json[i].straatnaam + " " + json[i].huisnr + " " +   json[i].huisnrtoev + " " + 
+					  				json[i].postcode + " " +   json[i].plaatsnaam + " " + json[i].staat + " " +    json[i].land + "</p>"
+				}
+			  	document.getElementById("mainpage").innerHTML = text;
+		}
+	};
+	xhttp.open("POST", "rest/person/add", true);
+	xhttp.setRequestHeader("Content-Type", "application/json");
+	xhttp.send(JSON.stringify({geslacht:geslacht, doopnaam:doopnaam, roepnaam:roepnaam, tussenvoegsel:tussenvoegsel, achternaam:achternaam, straatnaam:straatnaam, huisnr:huisnr, huisnrtoev:huisnrtoev, postcode:postcode, plaatsnaam:plaatsnaam, staat:staat, land:land}));
+}

@@ -3,7 +3,6 @@ package service;
 import java.util.List;
 
 import javax.ejb.Stateless;
-
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
@@ -30,5 +29,4 @@ public class PersonService {
 		Person person = personDAO.getPerson(id);
 		return person;
 	}
-
 }

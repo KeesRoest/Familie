@@ -11,16 +11,14 @@ import javax.persistence.Id;
 @Entity
 public class Person implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	private Long id;
 	private String geslacht;
 	private String doopnaam;
-	private String voornaam;
+	private String roepnaam;
 	private String tussenvoegsel;
 	private String achternaam;
 	private String straatnaam;
@@ -39,12 +37,12 @@ public class Person implements Serializable {
 	
 	public Person() {}
 	
-	public Person(String aGeslacht, String aDoopnaam, String aVoornaam, String aTussenvoegsel, String aAchternaam, String aStraatnaam, 
+	public Person(String aGeslacht, String aDoopnaam, String aRoepnaam, String aTussenvoegsel, String aAchternaam, String aStraatnaam, 
 				  int aHuisnr, String aHuisnrtoev, String aPostcode, String aPlaatsnaam, String aStaat, String aLand, String aTelefoon, 
 				  Date aGeboortedatum, String aGeboorteplaats, Date aOverlijdensdatum, String aEmail, String aPassword) {
 		setGeslacht(aGeslacht);
 		setDoopnaam(aDoopnaam);
-		setVoornaam(aVoornaam);
+		setRoepnaam(aRoepnaam);
 		setTussenvoegsel(aTussenvoegsel);
 		setAchternaam(aAchternaam);
 		setStraatnaam(aStraatnaam);
@@ -60,14 +58,6 @@ public class Person implements Serializable {
 		setOverlijdensdatum(aOverlijdensdatum);
 		setEmail(aEmail);
 		setPassword(aPassword);
-	}
-
-	public String getVoornaam() {
-		return voornaam;
-	}
-
-	public void setVoornaam(String voornaam) {
-		this.voornaam = voornaam;
 	}
 
 	public String getAchternaam() {
@@ -212,5 +202,13 @@ public class Person implements Serializable {
 
 	public void setGeboorteplaats(String geboorteplaats) {
 		this.geboorteplaats = geboorteplaats;
+	}
+
+	public String getRoepnaam() {
+		return roepnaam;
+	}
+
+	public void setRoepnaam(String roepnaam) {
+		this.roepnaam = roepnaam;
 	}
 }

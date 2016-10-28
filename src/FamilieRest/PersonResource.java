@@ -43,6 +43,6 @@ public class PersonResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addPerson(Person person) {
 		personService.addPerson(person);
-		System.out.println("Added a person with firstname " + person.getVoornaam() + " and with lastname " + person.getAchternaam());
+		System.out.println("Added a person with firstname " + person.getRoepnaam() + " and with lastname " + person.getAchternaam());
 	}
 }
