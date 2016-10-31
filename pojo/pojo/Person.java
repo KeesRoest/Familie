@@ -43,7 +43,8 @@ public class Person implements Serializable {
 	
 	public Person(String aGeslacht, String aDoopnaam, String aRoepnaam, String aTussenvoegsel, String aAchternaam, String aStraatnaam, 
 				  int aHuisnr, String aHuisnrtoev, String aPostcode, String aPlaatsnaam, String aStaat, String aLand, String aTelefoon, 
-				  LocalDate aGeboortedatum, String aGeboorteplaats, LocalDate aOverlijdensdatum, String aEmail, String aPassword) {
+				  String aGeboortedatum, String aGeboorteplaats, String aOverlijdensdatum, String aEmail, String aPassword) {
+		System.out.println(aGeboortedatum);
 		setGeslacht(aGeslacht);
 		setDoopnaam(aDoopnaam);
 		setRoepnaam(aRoepnaam);
@@ -179,8 +180,8 @@ public class Person implements Serializable {
 		}
 	}
 
-	public void setGeboortedatum(LocalDate geboortedatum) {
-		this.geboortedatum = geboortedatum;
+	public void setGeboortedatum(String geboortedatum) {
+		this.geboortedatum = LocalDate.parse(geboortedatum);
 	}
 
 	public String getOverlijdensdatum() {
@@ -194,8 +195,8 @@ public class Person implements Serializable {
 		}
 	}
 
-	public void setOverlijdensdatum(LocalDate overlijdensdatum) {
-		this.overlijdensdatum = overlijdensdatum;
+	public void setOverlijdensdatum(String overlijdensdatum) {
+		this.overlijdensdatum = LocalDate.parse(overlijdensdatum);;
 	}
 
 	public String getEmail() {
