@@ -78,77 +78,107 @@ function persGeg() {
 function checkPersGeg(id) {
 	switch (id) {
     case "doopnaam":
-    	alert("doopnaam");
     	document.getElementById("foutDoopnaam").innerHTML = "";
     	var y = document.getElementById(id).value.trim();
-		if (y == null | y == ""){document.getElementById("foutDoopnaam").innerHTML = "Doopnaam invullen s.v.p.";break}
-		alert("y:'" + y + "'");
+		if (y == null | y == ""){
+			document.getElementById("foutDoopnaam").innerHTML = "Doopnaam invullen s.v.p.";
+			return "1";
+			break;
+		}
+
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
-		document.getElementById(id).style.textTransform = "capitalize"
+		document.getElementById(id).style.textTransform = "capitalize";
 		break;
     case "roepnaam":
     	document.getElementById("foutRoepnaam").innerHTML = "";
     	var y = document.getElementById(id).value;
-		if (y == null | y == ""){document.getElementById("foutRoepnaam").innerHTML = "Roepnaam invullen s.v.p.";break}
+		if (y == null | y == ""){
+			document.getElementById("foutRoepnaam").innerHTML = "Roepnaam invullen s.v.p.";
+			return "1";
+			break;
+		}
 
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
-		document.getElementById(id).style.textTransform = "capitalize"
+		document.getElementById(id).style.textTransform = "capitalize";
 		break;
     case "tussenvoegsel":
     	document.getElementById("foutTussenvoegsel").innerHTML = "";
 
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
-		document.getElementById(id).style.textTransform = "capitalize"
+		document.getElementById(id).style.textTransform = "capitalize";
 		break;
     case "achternaam":
     	document.getElementById("foutAchternaam").innerHTML = "";
     	var y = document.getElementById(id).value;
-		if (y == null | y == ""){document.getElementById("foutAchternaam").innerHTML = "Achternaam invullen s.v.p.";break}
+		if (y == null | y == ""){
+			document.getElementById("foutAchternaam").innerHTML = "Achternaam invullen s.v.p.";
+			return "1";
+			break;
+		}
 
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
-		document.getElementById(id).style.textTransform = "capitalize"
+		document.getElementById(id).style.textTransform = "capitalize";
 		break;
     case "straatnaam":
     	document.getElementById("foutStraatnaam").innerHTML = "";
     	var y = document.getElementById(id).value;
-		if (y == null | y == ""){document.getElementById("foutStraatnaam").innerHTML = "Straatnaam invullen s.v.p.";break}
+		if (y == null | y == ""){
+			document.getElementById("foutStraatnaam").innerHTML = "Straatnaam invullen s.v.p.";
+			return "1";
+			break;
+		}
 
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
-		document.getElementById(id).style.textTransform = "capitalize"
+		document.getElementById(id).style.textTransform = "capitalize";
 		break;
     case "huisnr":
     	document.getElementById("foutHuisnr").innerHTML = "";
     	var y = document.getElementById(id).value;
-		if (y == null | y == ""){document.getElementById("foutHuisnr").innerHTML = "Huisnummer invullen s.v.p.";break}
+		if (y == null | y == ""){
+			document.getElementById("foutHuisnr").innerHTML = "Huisnummer invullen s.v.p.";
+			return "1";
+			break;
+			}
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
-		if (isNaN(y)){document.getElementById("foutHuisnr").innerHTML = "Huisnummer mag alleen cijfers bevatten.";break}
-		break;
+		if (isNaN(y)){
+			document.getElementById("foutHuisnr").innerHTML = "Huisnummer mag alleen cijfers bevatten.";
+			return "1";
+			break;
+		}
     case "huisnrToev":
-    	document.getElementById("foutHuisnrToev").innerHTML = "";
+//    	document.getElementById("foutHuisnrToev").innerHTML = null;
 
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
-		document.getElementById(id).style.textTransform = "capitalize"
+		document.getElementById(id).style.textTransform = "capitalize";
 		break;
     case "postcode":
     	document.getElementById("foutPostcode").innerHTML = "";
     	var y = document.getElementById(id).value;
-		if (y == null | y == ""){document.getElementById("foutPostcode").innerHTML = "Postcode invullen s.v.p.";break}
+		if (y == null | y == ""){
+			document.getElementById("foutPostcode").innerHTML = "Postcode invullen s.v.p.";
+			return "1";
+			break;
+		}
 
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
-		document.getElementById(id).style.textTransform = "uppercase"
+		document.getElementById(id).style.textTransform = "uppercase";
 		break;
     case "plaatsnaam":
     	document.getElementById("foutPlaatsnaam").innerHTML = "";
     	var y = document.getElementById(id).value;
-		if (y == null | y == ""){document.getElementById("foutPlaatsnaam").innerHTML = "Plaatsnaam invullen s.v.p.";break}
+		if (y == null | y == ""){
+			document.getElementById("foutPlaatsnaam").innerHTML = "Plaatsnaam invullen s.v.p.";
+			return "1";
+			break;
+		}
 
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
@@ -164,7 +194,11 @@ function checkPersGeg(id) {
     case "land":
     	document.getElementById("foutLand").innerHTML = "";
     	var y = document.getElementById(id).value;
-		if (y == null | y == ""){document.getElementById("foutLand").innerHTML = "Land invullen s.v.p.";break}
+		if (y == null | y == ""){
+			document.getElementById("foutLand").innerHTML = "Land invullen s.v.p.";
+			return "1";
+			break;
+		}
 
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
@@ -180,7 +214,11 @@ function checkPersGeg(id) {
     case "geboortedatum":
     	document.getElementById("foutGeboortedatum").innerHTML = "";
     	var y = document.getElementById(id).value;
-		if (y == null | y == ""){document.getElementById("foutGeboortedatum").innerHTML = "Geboortedatum invullen s.v.p.";break}
+		if (y == null | y == ""){
+			document.getElementById("foutGeboortedatum").innerHTML = "Geboortedatum invullen s.v.p.";
+			return "1";
+			break;
+		}
 
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
@@ -188,8 +226,11 @@ function checkPersGeg(id) {
     case "geboorteplaats":
     	document.getElementById("foutGeboorteplaats").innerHTML = "";
     	var y = document.getElementById(id).value;
-    	alert("y:'" + y + "'");
-		if (y == null | y == ""){document.getElementById("foutGeboorteplaats").innerHTML = "Geboorteplaats invullen s.v.p.";break}
+		if (y == null | y == ""){
+			document.getElementById("foutGeboorteplaats").innerHTML = "Geboorteplaats invullen s.v.p.";
+			return "1";
+			break;
+		}
 
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
@@ -205,7 +246,19 @@ function checkPersGeg(id) {
     case "email":
     	document.getElementById("foutEmail").innerHTML = "";
     	var y = document.getElementById(id).value;
-		if (y == null | y == ""){document.getElementById("foutEmail").innerHTML = "E-mail adres invullen s.v.p.";break}
+		if (y == null | y == ""){
+			document.getElementById("foutEmail").innerHTML = "E-mail adres invullen s.v.p.";
+			return "1";
+			break;
+		}
+		var email = document.forms["persgeg"]["email"].value;
+	    var atpos = email.indexOf("@");
+	    var dotpos = email.lastIndexOf(".");
+	    if (atpos<1 || dotpos < atpos+2 || dotpos + 2 >= email.length) {
+			document.getElementById("foutEmail").innerHTML = "Ongeldig e-mail adres.";
+			return "1";
+			break;
+	    }
 
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
@@ -213,7 +266,11 @@ function checkPersGeg(id) {
     case "password":
     	document.getElementById("foutPassword").innerHTML = "";
     	var y = document.getElementById(id).value;
-		if (y == null | y == ""){document.getElementById("foutPassword").innerHTML = "Wachtwoord invullen s.v.p.";break}
+		if (y == null | y == ""){
+			document.getElementById("foutPassword").innerHTML = "Wachtwoord invullen s.v.p.";
+			return "1";
+			break;
+		}
 
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
@@ -222,7 +279,11 @@ function checkPersGeg(id) {
     case "password2":
     	document.getElementById("foutPassword2").innerHTML = "";
     	var y = document.getElementById(id).value;
-		if (y == null | y == ""){document.getElementById("foutPassword2").innerHTML = "Wachtwoord herhalen s.v.p.";break}
+		if (y == null | y == ""){
+			document.getElementById("foutPassword2").innerHTML = "Wachtwoord herhalen s.v.p.";
+			return "1";
+			break;
+		}
 
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
@@ -230,14 +291,114 @@ function checkPersGeg(id) {
 	}
 }
 function controlePersgeg(){
-	alert("controle");
-	checkPersGeg("doopnaam");
-	return true
-}
-function setPersgeg() {
-	if (controlePersgeg() == true) {};
+	var fout = false;
+	if (checkPersGeg("password2") == "1"){
+		document.getElementById("password2").focus();
+		fout = true;
+	}
+	if (checkPersGeg("password") == "1"){
+		document.getElementById("password").focus();
+		fout = true;
+	}
+	if (checkPersGeg("email") == "1"){
+		document.getElementById("email").focus();
+		fout = true;
+	}
+	if (checkPersGeg("overlijdensdatum") == "1"){
+		document.getElementById("overlijdensdatum").focus();
+		fout = true;
+	}
+	if (checkPersGeg("geboorteplaats") == "1"){
+		document.getElementById("geboorteplaats").focus();
+		fout = true;
+	}
+	if (checkPersGeg("geboortedatum") == "1"){
+		document.getElementById("geboortedatum").focus();
+		fout = true;
+	}
+	if (checkPersGeg("telefoon") == "1"){
+		document.getElementById("telefoon").focus();
+		fout = true;
+	}
+	if (checkPersGeg("land") == "1"){
+		document.getElementById("land").focus();
+		fout = true;
+	}
+	if (checkPersGeg("staat") == "1"){
+		document.getElementById("staat").focus();
+		fout = true;
+	}
+	if (checkPersGeg("plaatsnaam") == "1"){
+		document.getElementById("plaatsnaam").focus();
+		fout = true;
+	}
+	if (checkPersGeg("postcode") == "1"){
+		document.getElementById("postcode").focus();
+		fout = true;
+	};
+	if (checkPersGeg("huisnrtoev") == "1"){
+		document.getElementById("huisnrtoev").focus();
+		fout = true;
+	}
+	if (checkPersGeg("huisnr") == "1"){
+		document.getElementById("huisnr").focus();
+		fout = true;
+	}
+	if (checkPersGeg("straatnaam") == "1"){
+		document.getElementById("straatnaam").focus();
+		fout = true;
+	}
+	if (checkPersGeg("achternaam") == "1"){
+		document.getElementById("achternaam").focus();
+		fout = true;
+	}
+	if (checkPersGeg("tussenvoegsel") == "1"){
+		document.getElementById("tussenvoegsel").focus();
+		fout = true;
+	}
+	if (checkPersGeg("roepnaam") == "1"){
+		document.getElementById("roepnaam").focus();
+		fout = true;
+	}
+	if (checkPersGeg("doopnaam") == "1"){
+		document.getElementById("doopnaam").focus();
+		fout = true;
+	}
+	if (fout == true){
+		return fout;
+	}
 	var geslacht = document.getElementById("geslacht").value;
-	var doopnaam = document.getElementById("doopnaam").value;
+	var doopnaam = document.getElementById("doopnaam").value;	
+	var roepnaam = document.getElementById("roepnaam").value;
+	var tussenvoegsel = document.getElementById("tussenvoegsel").value;
+	var achternaam = document.getElementById("achternaam").value;
+	var straatnaam = document.getElementById("straatnaam").value;
+	var huisnr = document.getElementById("huisnr").value;
+	var huisnrtoev = document.getElementById("huisnrtoev").value;
+	var postcode = document.getElementById("postcode").value;
+	var plaatsnaam = document.getElementById("plaatsnaam").value;
+	var staat = document.getElementById("staat").value;
+	var land = document.getElementById("land").value;
+	var telefoon = document.getElementById("telefoon").value;
+	var geboortedatum = document.getElementById("geboortedatum").value;
+	var geboorteplaats = document.getElementById("geboorteplaats").value;
+	var overlijdensdatum = document.getElementById("overlijdensdatum").value;
+	var email = document.getElementById("email").value;
+	var password = document.getElementById("password").value;
+	var password2 = document.getElementById("password2").value;
+	if (password2 != password){
+		document.getElementById("foutPassword").innerHTML = "'Wachtwoord' en 'Herhaal wachtwoord' moeten gelijk zijn.";
+		document.getElementById("password").focus();
+		return "1";
+	}
+	
+}	
+function setPersgeg() {
+	if (controlePersgeg() == true) {
+		return;
+	}
+	var geslacht = document.getElementById("geslacht").value;
+	var doopnaam = document.getElementById("doopnaam").value;	
 	var roepnaam = document.getElementById("roepnaam").value;
 	var tussenvoegsel = document.getElementById("tussenvoegsel").value;
 	var achternaam = document.getElementById("achternaam").value;
@@ -266,8 +427,13 @@ function setPersgeg() {
 				}
 			  	document.getElementById("mainpage").innerHTML = text;
 		}
-	};
+	}
 	xhttp.open("POST", "rest/person/add", true);
 	xhttp.setRequestHeader("Content-Type", "application/json");
 	xhttp.send(JSON.stringify({geslacht:geslacht, doopnaam:doopnaam, roepnaam:roepnaam, tussenvoegsel:tussenvoegsel, achternaam:achternaam, straatnaam:straatnaam, huisnr:huisnr, huisnrtoev:huisnrtoev, postcode:postcode, plaatsnaam:plaatsnaam, staat:staat, land:land}));
+}
+function setFocus(id){
+    var textbox = document.getElementById("id");
+    textbox.focus();
+    textbox.scrollIntoView();
 }
