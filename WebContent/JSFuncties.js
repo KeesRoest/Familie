@@ -38,10 +38,11 @@ function namenLijst() {
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	    	var json = JSON.parse(this.responseText)
-	      var text = ""
+	      var text = '<div id="namen">';
 	      for (var i = 0; i < json.length; i++) {
-	        text += '<a href="#" onclick="persoon(' + json[i].id + ')"' + '>'  + json[i].roepnaam + " " + json[i].achternaam + "</a><br>";
+	        text += '<p class="bg' + i%2 + '">' + '<a href="#" onclick="persoon(' + json[i].id + ')"' + '>'  + json[i].roepnaam + " " + json[i].tussenvoegsel + " " + json[i].achternaam + "</a></p>";
 	      }
+	      text += "</div>";
 	    document.getElementById("mainpage").innerHTML = text;
 	    }
 	  };
@@ -55,7 +56,27 @@ function persoon(id) {
 	xhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
 		var json = JSON.parse(this.responseText);
-		var text = "<p>" + json.id + ' '  + json.roepnaam + " " + json.achternaam + "</p>";
+		var text = '<table id="detail">';
+		text += "<tr><th>ID: </th><th>" + json.id + "</th></tr>";
+		text += "<tr><th></th><th></th></tr>";
+		text += "<tr><td>Geslacht        : </td><td>" + json.geslacht         + "</td></tr>";
+		text += "<tr><td>Doopnaam        : </td><td>" + json.doopnaam         + "</td></tr>";
+		text += "<tr><td>Roepnaam        : </td><td>" + json.roepnaam         + "</td></tr>";
+		text += "<tr><td>Tussenvoegsel   : </td><td>" + json.tussenvoegsel    + "</td></tr>";
+		text += "<tr><td>Achternaam      : </td><td>" + json.achternaam       + "</td></tr>";
+		text += "<tr><td>Straatnaam      : </td><td>" + json.straatnaam       + "</td></tr>";
+		text += "<tr><td>Huisnummer      : </td><td>" + json.huisnr           + "</td></tr>";
+		text += "<tr><td>Huisnr toev.    : </td><td>" + json.huisnrtoev       + "</td></tr>";
+		text += "<tr><td>Postcode        : </td><td>" + json.postcode         + "</td></tr>";
+		text += "<tr><td>Plaatsnaam      : </td><td>" + json.plaatsnaam       + "</td></tr>";
+		text += "<tr><td>Staat           : </td><td>" + json.staat            + "</td></tr>";
+		text += "<tr><td>Land            : </td><td>" + json.land             + "</td></tr>";
+		text += "<tr><td>Telefoon        : </td><td>" + json.telefoon         + "</td></tr>";
+		text += "<tr><td>Geboortedatum   : </td><td>" + json.geboortedatum    + "</td></tr>";
+		text += "<tr><td>Geboorteplaats  : </td><td>" + json.geboorteplaats   + "</td></tr>";
+		text += "<tr><td>Datum Overlijden: </td><td>" + json.overlijdensdatum + "</td></tr>";
+		text += "<tr><td>E-mail adres    : </td><td>" + json.email            + "</td></tr>";
+		text += "</table>";
 	    document.getElementById("mainpage").innerHTML = text;
 	}
   }
@@ -430,6 +451,7 @@ function setPersgeg() {
 	}
 	xhttp.open("POST", "rest/person/add", true);
 	xhttp.setRequestHeader("Content-Type", "application/json");
+<<<<<<< HEAD
 	xhttp.send(JSON.stringify({geslacht:geslacht, doopnaam:doopnaam, roepnaam:roepnaam, tussenvoegsel:tussenvoegsel, achternaam:achternaam, straatnaam:straatnaam, huisnr:huisnr, huisnrtoev:huisnrtoev, postcode:postcode, plaatsnaam:plaatsnaam, staat:staat, land:land}));
 }
 function setFocus(id){
@@ -437,3 +459,24 @@ function setFocus(id){
     textbox.focus();
     textbox.scrollIntoView();
 }
+=======
+	xhttp.send(JSON.stringify({geslacht:geslacht
+		, doopnaam:doopnaam
+		, roepnaam:roepnaam
+		, tussenvoegsel:tussenvoegsel
+		, achternaam:achternaam
+		, straatnaam:straatnaam
+		, huisnr:huisnr
+		, huisnrtoev:huisnrtoev
+		, postcode:postcode
+		, plaatsnaam:plaatsnaam
+		, staat:staat
+		, land:land
+		, telefoon:telefoon
+		, geboortedatum:geboortedatum
+		, geboorteplaats:geboorteplaats
+		, overlijdensdatum:overlijdensdatum
+		, email:email
+		, password:password}));
+	}
+>>>>>>> master
