@@ -126,10 +126,9 @@ function checkPersGeg(id) {
 		break;
     case "tussenvoegsel":
     	document.getElementById("foutTussenvoegsel").innerHTML = "";
-
-		var x = document.getElementById(id);
-		x.value = x.value.trim();
-		document.getElementById(id).style.textTransform = "capitalize";
+		var x = document.getElementById(id).value;
+		x.value = x.trim();
+		x.value = x.toLowerCase();
 		break;
     case "achternaam":
     	document.getElementById("foutAchternaam").innerHTML = "";
@@ -172,8 +171,12 @@ function checkPersGeg(id) {
 			return "1";
 			break;
 		}
+		if (y <= 0){
+			document.getElementById("foutHuisnr").innerHTML = "Huisnummer moet groter zijn dan nul.";
+			return "1";
+			break;
+		}
     case "huisnrToev":
-//    	document.getElementById("foutHuisnrToev").innerHTML = null;
 
 		var x = document.getElementById(id);
 		x.value = x.value.trim();
@@ -382,7 +385,7 @@ function controlePersgeg(){
 		fout = true;
 	}
 	if (checkPersGeg("doopnaam") == "1"){
-		document.getElementById("doopnaam").focus();
+		setFocus("doopnaam");
 		fout = true;
 	}
 	if (fout == true){
@@ -400,20 +403,30 @@ function controlePersgeg(){
 	var plaatsnaam = document.getElementById("plaatsnaam").value;
 	var staat = document.getElementById("staat").value;
 	var land = document.getElementById("land").value;
+	if ((staat != "" & land == "") | staat != "" & land == "Nederland"){
+		document.getElementById("foutStaat").innerHTML = "Staat niet invullen bij 'Nederland'.";
+		setFocus("staat");
+	}
 	var telefoon = document.getElementById("telefoon").value;
 	var geboortedatum = document.getElementById("geboortedatum").value;
 	var geboorteplaats = document.getElementById("geboorteplaats").value;
 	var overlijdensdatum = document.getElementById("overlijdensdatum").value;
+	if (overlijdensdatum != "" & overlijdensdatum != null){
+		if (overlijdensdatum <= geboortedatum) {
+			document.getElementById("foutStaat").innerHTML = "Overlijdensdatum moet op of na geboortedatum liggen.";
+			setFocus("overlijdensdatum");
+		}
+	}
 	var email = document.getElementById("email").value;
 	var password = document.getElementById("password").value;
 	var password2 = document.getElementById("password2").value;
 	if (password2 != password){
 		document.getElementById("foutPassword").innerHTML = "'Wachtwoord' en 'Herhaal wachtwoord' moeten gelijk zijn.";
-		document.getElementById("password").focus();
+		setFocus("password");
 		return "1";
 	}
-	
-}	
+}
+
 function setPersgeg() {
 	if (controlePersgeg() == true) {
 		return;
@@ -447,19 +460,12 @@ function setPersgeg() {
 					  				json[i].postcode + " " +   json[i].plaatsnaam + " " + json[i].staat + " " +    json[i].land + "</p>"
 				}
 			  	document.getElementById("mainpage").innerHTML = text;
+		} else if (this.readyState == 4 && this.status == 412) {
+			document.getElementById("error").innerHTML = "Fout!!!!";
 		}
 	}
 	xhttp.open("POST", "rest/person/add", true);
 	xhttp.setRequestHeader("Content-Type", "application/json");
-<<<<<<< HEAD
-	xhttp.send(JSON.stringify({geslacht:geslacht, doopnaam:doopnaam, roepnaam:roepnaam, tussenvoegsel:tussenvoegsel, achternaam:achternaam, straatnaam:straatnaam, huisnr:huisnr, huisnrtoev:huisnrtoev, postcode:postcode, plaatsnaam:plaatsnaam, staat:staat, land:land}));
-}
-function setFocus(id){
-    var textbox = document.getElementById("id");
-    textbox.focus();
-    textbox.scrollIntoView();
-}
-=======
 	xhttp.send(JSON.stringify({geslacht:geslacht
 		, doopnaam:doopnaam
 		, roepnaam:roepnaam
@@ -479,4 +485,9 @@ function setFocus(id){
 		, email:email
 		, password:password}));
 	}
->>>>>>> master
+	
+function setFocus(id){
+    var textbox = document.getElementById(id);
+    textbox.focus();
+    textbox.scrollIntoView();
+}

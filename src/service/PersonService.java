@@ -1,5 +1,6 @@
 package service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -28,5 +29,10 @@ public class PersonService {
 	public Person getPerson(Long id) {
 		Person person = personDAO.getPerson(id);
 		return person;
+	}
+	
+	public Boolean existPerson(Person person) {
+		Boolean result = personDAO.existPerson(person);
+		return result;
 	}
 }
