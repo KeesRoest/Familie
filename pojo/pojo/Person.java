@@ -1,6 +1,10 @@
 package pojo;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -29,9 +33,9 @@ public class Person implements Serializable {
 	private String staat;
 	private String land;
 	private String telefoon;
-	private Date geboortedatum;
+	private LocalDate geboortedatum;
 	private String geboorteplaats;
-	private Date overlijdensdatum;
+	private LocalDate overlijdensdatum;
 	private String email;
 	private String password;
 	
@@ -39,7 +43,7 @@ public class Person implements Serializable {
 	
 	public Person(String aGeslacht, String aDoopnaam, String aRoepnaam, String aTussenvoegsel, String aAchternaam, String aStraatnaam, 
 				  int aHuisnr, String aHuisnrtoev, String aPostcode, String aPlaatsnaam, String aStaat, String aLand, String aTelefoon, 
-				  Date aGeboortedatum, String aGeboorteplaats, Date aOverlijdensdatum, String aEmail, String aPassword) {
+				  LocalDate aGeboortedatum, String aGeboorteplaats, LocalDate aOverlijdensdatum, String aEmail, String aPassword) {
 		setGeslacht(aGeslacht);
 		setDoopnaam(aDoopnaam);
 		setRoepnaam(aRoepnaam);
@@ -164,19 +168,33 @@ public class Person implements Serializable {
 		this.telefoon = telefoon;
 	}
 
-	public Date getGeboortedatum() {
-		return geboortedatum;
+	public String getGeboortedatum() {
+		if (geboortedatum == null) {
+			return "";
+		}
+		else {
+			DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			String strDate = dateFormat.format(geboortedatum);
+			return strDate;
+		}
 	}
 
-	public void setGeboortedatum(Date geboortedatum) {
+	public void setGeboortedatum(LocalDate geboortedatum) {
 		this.geboortedatum = geboortedatum;
 	}
 
-	public Date getOverlijdensdatum() {
-		return overlijdensdatum;
+	public String getOverlijdensdatum() {
+		if (overlijdensdatum == null) {
+			return "";
+		}
+		else {
+			DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			String strDate = dateFormat.format(overlijdensdatum);
+			return strDate;
+		}
 	}
 
-	public void setOverlijdensdatum(Date overlijdensdatum) {
+	public void setOverlijdensdatum(LocalDate overlijdensdatum) {
 		this.overlijdensdatum = overlijdensdatum;
 	}
 

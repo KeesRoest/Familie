@@ -76,7 +76,7 @@ function persoon(id) {
 		text += "<tr><td>Geboorteplaats  : </td><td>" + json.geboorteplaats   + "</td></tr>";
 		text += "<tr><td>Datum Overlijden: </td><td>" + json.overlijdensdatum + "</td></tr>";
 		text += "<tr><td>E-mail adres    : </td><td>" + json.email            + "</td></tr>";
-		text += "</table>";
+		text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
 	    document.getElementById("mainpage").innerHTML = text;
 	}
   }
@@ -451,15 +451,6 @@ function setPersgeg() {
 	}
 	xhttp.open("POST", "rest/person/add", true);
 	xhttp.setRequestHeader("Content-Type", "application/json");
-<<<<<<< HEAD
-	xhttp.send(JSON.stringify({geslacht:geslacht, doopnaam:doopnaam, roepnaam:roepnaam, tussenvoegsel:tussenvoegsel, achternaam:achternaam, straatnaam:straatnaam, huisnr:huisnr, huisnrtoev:huisnrtoev, postcode:postcode, plaatsnaam:plaatsnaam, staat:staat, land:land}));
-}
-function setFocus(id){
-    var textbox = document.getElementById("id");
-    textbox.focus();
-    textbox.scrollIntoView();
-}
-=======
 	xhttp.send(JSON.stringify({geslacht:geslacht
 		, doopnaam:doopnaam
 		, roepnaam:roepnaam
@@ -479,4 +470,9 @@ function setFocus(id){
 		, email:email
 		, password:password}));
 	}
->>>>>>> master
+
+function setFocus(id){
+    var textbox = document.getElementById("id");
+    textbox.focus();
+    textbox.scrollIntoView();
+}

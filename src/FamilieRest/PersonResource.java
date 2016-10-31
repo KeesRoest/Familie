@@ -35,6 +35,7 @@ public class PersonResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Person getOnePerson(@PathParam("id") Long id) {
 		Person person = personService.getPerson(id);
+		System.out.println(person.getGeboortedatum());
 		return person;
 	}
 
