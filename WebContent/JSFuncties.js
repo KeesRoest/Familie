@@ -261,7 +261,7 @@ function checkPersGeg(id) {
 		document.getElementById(id).style.textTransform = "capitalize"
 		break;
     case "overlijdensdatum":
-    	document.getElementById("foutGeboortedatum").innerHTML = "";
+    	document.getElementById("foutOverlijdensdatum").innerHTML = "";
     	var y = document.getElementById(id).value;
 
 		var x = document.getElementById(id);
@@ -314,6 +314,7 @@ function checkPersGeg(id) {
 		break;
 	}
 }
+
 function controlePersgeg(){
 	var fout = false;
 	if (checkPersGeg("password2") == "1"){
@@ -406,15 +407,17 @@ function controlePersgeg(){
 	if ((staat != "" & land == "") | staat != "" & land == "Nederland"){
 		document.getElementById("foutStaat").innerHTML = "Staat niet invullen bij 'Nederland'.";
 		setFocus("staat");
+		fout = true;
 	}
 	var telefoon = document.getElementById("telefoon").value;
 	var geboortedatum = document.getElementById("geboortedatum").value;
 	var geboorteplaats = document.getElementById("geboorteplaats").value;
 	var overlijdensdatum = document.getElementById("overlijdensdatum").value;
 	if (overlijdensdatum != "" & overlijdensdatum != null){
-		if (overlijdensdatum <= geboortedatum) {
-			document.getElementById("foutStaat").innerHTML = "Overlijdensdatum moet op of na geboortedatum liggen.";
+		if (overlijdensdatum < geboortedatum) {
+			document.getElementById("foutOverlijdensdatum").innerHTML = "Overlijdensdatum moet op of na geboortedatum liggen.";
 			setFocus("overlijdensdatum");
+			fout = true;
 		}
 	}
 	var email = document.getElementById("email").value;
@@ -423,8 +426,9 @@ function controlePersgeg(){
 	if (password2 != password){
 		document.getElementById("foutPassword").innerHTML = "'Wachtwoord' en 'Herhaal wachtwoord' moeten gelijk zijn.";
 		setFocus("password");
-		return "1";
+		fout = true;
 	}
+	return fout;
 }
 
 function setPersgeg() {
@@ -483,12 +487,6 @@ function setPersgeg() {
 	
 function setFocus(id){
     var textbox = document.getElementById(id);
-    textbox.focus();
-    textbox.scrollIntoView();
-}
-
-function setFocus(id){
-    var textbox = document.getElementById("id");
     textbox.focus();
     textbox.scrollIntoView();
 }
