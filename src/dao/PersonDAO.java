@@ -32,10 +32,14 @@ public class PersonDAO {
 	}
 	
 	public Boolean existPerson(Person person) {
-		Person result = em.createQuery("SELECT p FROM Person p where achternaam = '" + person.getAchternaam() + "'"
-		                                                                      + " And roepnaam = '" + person.getRoepnaam() + "'" 
+		System.out.println("personDAO existPerson");
+		Person result = em.createQuery("SELECT p FROM Person p where achternaam = '" + person.getAchternaam() + "'", Person.class).getSingleResult();
+		System.out.println(result.getAchternaam());
+/*
+				+ " And roepnaam = '" + person.getRoepnaam() + "'" 
 		                                                                      + " And geboortedatum = '" + person.getGeboortedatum() + "'",
 		                                                                      Person.class).getSingleResult();
+*/
 		if (result == null){
 			return new Boolean(false);}
 		else{

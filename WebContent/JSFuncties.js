@@ -451,17 +451,11 @@ function setPersgeg() {
 	var password = document.getElementById("password").value;
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var json = JSON.parse(this.responseText)
-			var text = ""
-				for (var i = 0; i < json.length; i++) {
-					text += "<p>" + json[i].geslacht + " " +   json[i].doopnaam + " " +   json[i].roepnaam + " " + json[i].tussenvoegsel + " " + 
-					  				json[i].achternaam + " " + json[i].straatnaam + " " + json[i].huisnr + " " +   json[i].huisnrtoev + " " + 
-					  				json[i].postcode + " " +   json[i].plaatsnaam + " " + json[i].staat + " " +    json[i].land + "</p>"
-				}
-			  	document.getElementById("mainpage").innerHTML = text;
-		} else if (this.readyState == 4 && this.status == 412) {
-			document.getElementById("error").innerHTML = "Fout!!!!";
+		if (this.readyState == 4 && this.status == 204) {
+			alert("Persoon opgeslagen");
+		}
+		else if (this.readyState == 4 && this.status == 412) {
+			alert("Persoon komt al voor in database");
 		}
 	}
 	xhttp.open("POST", "rest/person/add", true);
@@ -485,6 +479,7 @@ function setPersgeg() {
 		, email:email
 		, password:password}));
 	}
+
 	
 function setFocus(id){
     var textbox = document.getElementById(id);
