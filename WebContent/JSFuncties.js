@@ -106,23 +106,18 @@ function checkPersGeg(id) {
 			return "1";
 			break;
 		}
-
 		var x = document.getElementById(id);
-		x.value = x.value.trim();
-		document.getElementById(id).style.textTransform = "capitalize";
-		break;
+		x.value = capitalize(y)
     case "roepnaam":
     	document.getElementById("foutRoepnaam").innerHTML = "";
-    	var y = document.getElementById(id).value;
+    	var y = document.getElementById(id).value.trim();
 		if (y == null | y == ""){
 			document.getElementById("foutRoepnaam").innerHTML = "Roepnaam invullen s.v.p.";
 			return "1";
 			break;
 		}
-
 		var x = document.getElementById(id);
-		x.value = x.value.trim();
-		document.getElementById(id).style.textTransform = "capitalize";
+		x.value = capitalize(y)
 		break;
     case "tussenvoegsel":
     	document.getElementById("foutTussenvoegsel").innerHTML = "";
@@ -138,10 +133,8 @@ function checkPersGeg(id) {
 			return "1";
 			break;
 		}
-
 		var x = document.getElementById(id);
-		x.value = x.value.trim();
-		document.getElementById(id).style.textTransform = "capitalize";
+		x.value = capitalize(y)
 		break;
     case "straatnaam":
     	document.getElementById("foutStraatnaam").innerHTML = "";
@@ -489,4 +482,13 @@ function setFocus(id){
     var textbox = document.getElementById(id);
     textbox.focus();
     textbox.scrollIntoView();
+	}
+
+function capitalize(string) {
+	str = string.toLowerCase();
+    var firstLetterRx = /(^|\s)[a-z]/g;
+    return str.replace(firstLetterRx, upperCase);
+	}
+function upperCase(str) {
+    return str.toUpperCase();
 }
