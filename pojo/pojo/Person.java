@@ -196,7 +196,12 @@ public class Person implements Serializable {
 	}
 
 	public void setOverlijdensdatum(String overlijdensdatum) {
-		this.overlijdensdatum = LocalDate.parse(overlijdensdatum);;
+		if (overlijdensdatum == null) {
+			this.overlijdensdatum = LocalDate.parse(overlijdensdatum);
+		}
+		else {
+			this.overlijdensdatum = null;
+		}
 	}
 
 	public String getEmail() {

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import pojo.Person;
@@ -33,18 +34,21 @@ public class PersonDAO {
 	
 	public Boolean existPerson(Person person) {
 		System.out.println("personDAO existPerson");
-		Person result = em.createQuery("SELECT p FROM Person p where achternaam = '" + person.getAchternaam() + "'", Person.class).getSingleResult();
-		System.out.println(result.getAchternaam());
-/*
-				+ " And roepnaam = '" + person.getRoepnaam() + "'" 
-		                                                                      + " And geboortedatum = '" + person.getGeboortedatum() + "'",
-		                                                                      Person.class).getSingleResult();
-*/
-		if (result == null){
+		Person result = null;
+		try {
+			result = em.createQuery("SELECT p FROM Person p where achternaam = '" + person.getAchternaam() + "'", Person.class).getSingleResult();
+		}
+		catch (NoResultException e) {}
+		if (result == null) {
 			return new Boolean(false);}
 		else{
 			return new Boolean(true);
 		}
+		/*
+		+ " And roepnaam = '" + person.getRoepnaam() + "'" 
+                                                                      + " And geboortedatum = '" + person.getGeboortedatum() + "'",
+                                                                      Person.class).getSingleResult();
+*/
 	}
 
 }

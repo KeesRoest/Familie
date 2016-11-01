@@ -44,12 +44,13 @@ public class PersonResource {
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addPerson(Person person) {
-		throw new DuplicatePersonException("Person " + person + " already exists");
-//    	if (personService.existPerson(person)) {
-//    		throw new DuplicatePersonException("Person " + person + " already exists");
-//    	}
-//		personService.addPerson(person);
-//		System.out.println("Added a person with firstname " + person.getRoepnaam() + " and with lastname " + person.getAchternaam());
+    	if (personService.existPerson(person) == false) {
+    		personService.addPerson(person);
+    		System.out.println("Added a person with firstname " + person.getRoepnaam() + " and with lastname " + person.getAchternaam());
+    	}
+    	else {
+    		throw new DuplicatePersonException("Person " + person + " already exists");
+    	}
 	}
     
 }
