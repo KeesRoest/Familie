@@ -1,11 +1,8 @@
 package pojo;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,7 +41,6 @@ public class Person implements Serializable {
 	public Person(String aGeslacht, String aDoopnaam, String aRoepnaam, String aTussenvoegsel, String aAchternaam, String aStraatnaam, 
 				  int aHuisnr, String aHuisnrtoev, String aPostcode, String aPlaatsnaam, String aStaat, String aLand, String aTelefoon, 
 				  String aGeboortedatum, String aGeboorteplaats, String aOverlijdensdatum, String aEmail, String aPassword) {
-		System.out.println(aGeboortedatum);
 		setGeslacht(aGeslacht);
 		setDoopnaam(aDoopnaam);
 		setRoepnaam(aRoepnaam);

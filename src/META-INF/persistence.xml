@@ -4,6 +4,7 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jboss/datasources/java8databaseDS</jta-data-source>
 		<class>pojo.Person</class>
+		<class>pojo.Relation</class>
   		<properties>
 			<property name="javax.persistence.schema-generation.create-source"
 				value="metadata" />

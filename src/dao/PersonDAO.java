@@ -1,6 +1,5 @@
 package dao;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -36,7 +35,10 @@ public class PersonDAO {
 		System.out.println("personDAO existPerson");
 		Person result = null;
 		try {
-			result = em.createQuery("SELECT p FROM Person p where achternaam = '" + person.getAchternaam() + "'", Person.class).getSingleResult();
+			result = em.createQuery("SELECT p FROM Person p where achternaam = '"
+					+ person.getAchternaam() + "'"+ " And roepnaam = '" + person.getRoepnaam() + "'" 
+		            + " And geboortedatum = '" + person.getGeboortedatum() + "'",
+		            Person.class).getSingleResult();
 		}
 		catch (NoResultException e) {}
 		if (result == null) {
@@ -44,11 +46,6 @@ public class PersonDAO {
 		else{
 			return new Boolean(true);
 		}
-		/*
-		+ " And roepnaam = '" + person.getRoepnaam() + "'" 
-                                                                      + " And geboortedatum = '" + person.getGeboortedatum() + "'",
-                                                                      Person.class).getSingleResult();
-*/
 	}
 
 }
