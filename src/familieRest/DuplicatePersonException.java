@@ -1,4 +1,4 @@
-package FamilieRest;
+package familieRest;
 
 public class DuplicatePersonException extends RuntimeException {
 

@@ -1,4 +1,4 @@
-package FamilieRest;
+package familieRest;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
