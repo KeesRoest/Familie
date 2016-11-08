@@ -2,27 +2,28 @@
 * {	
 	margin: 0px; padding: 0px;
 }
-.clear {
-	clear:both;}
-.clearleft {
-	display:block; 
-	clear:left;}
-.clearright{
-	display:block;
-	 clear:right;}
-.hide {
-	display:none;}
 a {
 	color:#B32C0E;
 }
-
 a:hover {
 	color:#000000;
 	text-decoration:none;
 }
 body {
-	background: #FFFFFF  url(images/bg.jpg) repeat-x;
-	}
+	background: #FFFFFF;
+}
+.style_2 {
+	font-size: 7px;
+	color: #000011;
+}
+.style_2 a{
+	font-size: 7px;
+	color: #000011;
+}
+.style_2 a:hover{
+	font-size: 7px;
+	color: #000011;
+}
 #wrap{
 	width: 80%;
 	margin:0px auto 15px auto;
@@ -30,21 +31,37 @@ body {
 	font-size:12px;
 	color:#666666;
 }
-
-/*Header*/
-
-#header{
-	height:189px;
-	background:url(images/Header.png) no-repeat center top;
-	clear: both;
+#topbar{
+	height:200px;
+	background-color: black;
+	background:url(images/Header.png) no-repeat center top; 
 }
-/*Header Menu*/
+h1  {
+	height: 200px;
+	color:#B32C0E;
+	font-weight:bold;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+h2, h3, h4, h5 {
+	color:#B32C0E;
+	font-weight:bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#sitename a{
+	text-decoration :none;
+	font-size:24px;
+	color:#000000;
+	padding-top:20px;
+	height:100px;
+}
 #topmenu {
 	display:block;
 	list-style:none;
-	padding:0 0px 0px 278px;
-	float: right;
+	padding:0 0px 0px 0px;
+	float: left;
 	width: 75%;
+	background-color: black;
 }
 #topmenu li {
 	display:inline;
@@ -53,7 +70,16 @@ body {
 	display:block;
 	float:left;
 	height:28px;
-	margin:0px 0px 0px0px;
+	margin:0px 0px 0px 0px;
+	text-decoration:none;
+	padding:9px 15px 0px 15px;
+	text-align:center;
+}
+#topmenu b {
+	display:block;
+	float:right;
+	height:28px;
+	margin:0px 0px 0px 0px;
 	text-decoration:none;
 	padding:9px 15px 0px 15px;
 	text-align:center;
@@ -69,34 +95,15 @@ body {
 	color:#FFFFFF;
 	background-color: #B42D0F;
 }
-
-/*Content*/
-#content {
-	background-color: #FFFFFF;
+#header{
+	height:189px;
+/*	background:url(images/Header.png) no-repeat center top;*/
+	clear: both;
 }
 #mainpage {
 	width:60%;
 	padding:5px 5px 5px 0px;
 	height:550px
-}
-#mainpage p {
-	line-height:10px;
-	margin:10px 0px 10px 0px;
-}
-#mainpage blockquote {
-	background:#efefef;
-	display:block; 
-	margin:5px;
-	font:Georgia, "Times New Roman", Times, serif; 
-	font-style:italic;}
-h1, h2, h3, h4, h5 {
-	color:#B32C0E;
-	font-weight:bold;
-	font-family: Arial, Helvetica, sans-serif;
-}
-#mainpage h1 {
-	font-size:24px;
-	color: #F2F7F3;
 }
 #mainpage h2 {
 	font-size:18px;
@@ -104,57 +111,10 @@ h1, h2, h3, h4, h5 {
 	padding-bottom: 5px;
 	border-bottom: 1px solid #B52E10;
 }
-#mainpage h3 {
-	font-size:20px;}
-#mainpage h4 {
-	font-size:18px;}
-#mainpage h5 {
-	font-size:16px;}
-	
-#namen {
-	border: solid 1px #C8C8FF;
+#mainpage p {
+	line-height:10px;
+	margin:10px 0px 10px 0px;
 }
-
-#namen p.bg0 {
-	padding: 5px;
-	background-color: #c0c0c0;
-}
-
-#namen p.bg1 {
-	padding: 5px;
-	background-color: #c0c0c0;
-}
-
-.style_2 {
-	font-size: 7px;
-	color: #000011;
-	}
-.style_2 a{
-	font-size: 7px;
-	color: #000011;
-	}
-.style_2 a:hover{
-	font-size: 7px;
-	color: #000011;
-	}
-#content #mainpage ol {
-	margin:10px 10px 10px 25px;}
-#content #mainpage ol li {
-	padding:5px 5px 5px 20px;}
-#content #mainpage ul li {
-	display:block; 
-	padding:0px; 
-	border-bottom: dashed 1px #D6E4A7;}
-
-#detail td {
-            border: solid 1px #C8C8FF;
-            list-style-type: none;
-            margin-bottom: 5px;
-            padding: 1px;
-            color: #333;
-        }
-
-/*Sidebar*/
 #sidebar {
 	margin:0px 0px 0px 0px;
 	width: 225px;
@@ -163,25 +123,8 @@ h1, h2, h3, h4, h5 {
 #sidebarcontents {
 	padding:5px 0px 5px 0px;
 }
-
-/*Sidemenu*/
 #menu {
 	list-style:none;
-}
-#menu li ul {list-style:none;}
-#menu li ul li {
-	display:block; 
-	height:25px; 
-	border-bottom:solid 1px #efefef;}
-#menu li ul a, #menu li ul a:visited, #menu li ul a:active {
-	display:block; 
-	height:20px; 
-	padding:5px 5px 0px 5px; 
-	text-decoration:none; 
-	color:#333333;}
-#menu li ul  a:hover {
-	background:#F8F9F2;
-	color:#B32C0E;
 }
 #menu h2 {
 	display:block;
@@ -193,11 +136,31 @@ h1, h2, h3, h4, h5 {
 	color:#B32C0E;
 	font-weight:bold;
 }
-
-/*footer*/
+menu li ul {
+	list-style:none;
+}
+#menu li ul li {
+	display:block; 
+	height:25px; 
+	border-bottom:solid 1px #efefef;
+}
+#menu li ul a, #menu li ul a:visited, #menu li ul a:active {
+	display:block; 
+	height:20px; 
+	padding:5px 5px 0px 5px; 
+	text-decoration:none; 
+	color:#333333;
+}
+#menu li ul  a:hover {
+	background:#F8F9F2;
+	color:#B32C0E;
+}
+.clear {
+	clear:both;
+}
 #footer {
 	margin:0 auto;
-	width:685px;
+	width:100%;
 	height:75px;
 	padding:10px;
 	color:#FFFFFF;
@@ -207,26 +170,89 @@ h1, h2, h3, h4, h5 {
 	font-size: 11px;
 	clear: both;
 }
+
+
+/* Alle familieleden */
+#namen {
+	border: solid 1px #C8C8FF;
+}
+#namen p.bg0 {
+	padding: 5px;
+	background-color: #c0c0c0;
+}
+#namen p.bg1 {
+	padding: 5px;
+	background-color: #c0c0c0;
+}
+
+/* Persoonsgegevens */
+.persgeg {
+	width:80%;
+}
+.kolom1{
+	width:20%;
+}
+.kolom2{
+	width:50%;
+}
+.foutmelding {
+	color:#B32C0E;	
+}
+/**/
+/*
+.clearleft {
+	display:block; 
+	clear:left;
+}
+.clearright{
+	display:block;
+	 clear:right;
+}
+#mainpage blockquote {
+	background:#efefef;
+	display:block; 
+	margin:5px;
+	font:Georgia, "Times New Roman", Times, serif; 
+	font-style:italic;}
+#mainpage h1 {
+	font-size:24px;
+	color: #F2F7F3;
+}
+#mainpage h3 {
+	font-size:20px;}
+#mainpage h4 {
+	font-size:18px;}
+#mainpage h5 {
+	font-size:16px;}
+.hide {
+	display:none;}
+#content {
+	background-color: #FFFFFF;
+}
+#content #mainpage ol {
+	margin:10px 10px 10px 25px;}
+#content #mainpage ol li {
+	padding:5px 5px 5px 20px;}
+#content #mainpage ul li {
+	display:block; 
+	padding:0px; 
+	border-bottom: dashed 1px #D6E4A7;}
+#detail td {
+            border: solid 1px #C8C8FF;
+            list-style-type: none;
+            margin-bottom: 5px;
+            padding: 1px;
+            color: #333;
+        }
 #credit {font-size:10px; 
 	padding:3px;}
-#sitename a{
-	text-decoration :none;
-	font-size:24pxx;
-	color:#FFFFFF;
-	padding-top:20px;
-}
-#topbar{
-	height:78px;
-}
 #caption{
 	height:50px;
 	background:url(images/caption.gif) repeat-x top left;
 	}
-	.bold{font-size:16px;
+.bold{font-size:16px;
 	color:#FFFFFF;
 	padding-left:100px;
 	padding-top:25px;
 	}
-td.capitalize {
-    text-transform: capitalize;	
-}
+*/

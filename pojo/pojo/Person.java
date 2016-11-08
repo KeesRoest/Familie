@@ -192,7 +192,7 @@ public class Person implements Serializable {
 	}
 
 	public void setOverlijdensdatum(String overlijdensdatum) {
-		if (overlijdensdatum == null) {
+		if (overlijdensdatum == "") {
 			this.overlijdensdatum = null;
 		}
 		else {
