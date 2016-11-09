@@ -203,25 +203,21 @@ menu li ul {
 #up { 
    width:90%; 
    height:100px;
-   background:red;
    float:top; 
 }
 #left { 
    width:30%; 
    height:400px;
-   background:green;
    float:left; 
 }
 #center { 
    width:30%; 
    height:400px;
-   background:yellow;
    float:left; 
 }
 #right { 
    width:30%; 
    height:400px;
-   background:blue;
    float:left; 
 }
 
