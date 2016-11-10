@@ -11,7 +11,7 @@ a:hover {
 }
 body {
 	background: #FFFFFF;
-	height: 100%
+	min-height: 100%;
 }
 .style_2 {
 	font-size: 7px;
@@ -34,8 +34,20 @@ body {
 }
 #topbar{
 	height:200px;
-	background-color: black;
-	background:url(images/Header.png) no-repeat center top; 
+	background: #FFFFFF;
+}
+#top-links {
+    float: left;
+}
+#top-midden {
+	box-sizing: border-box;
+    display: transparent;
+}
+#top-rechts {
+    float: right;
+}
+img {
+	border: none;
 }
 h1  {
 /*	height: 200px;*/
@@ -61,7 +73,7 @@ h2, h3, h4, h5 {
 	list-style:none;
 	padding:0 0px 0px 0px;
 	float: left;
-	width: 90%;
+	width: 100%;
 	background-color: black;
 }
 #topmenu li {

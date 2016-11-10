@@ -10,20 +10,24 @@
 <body onload="home()">
 	<div id="wrap">
 		<div id="topbar">
-			<h1 id="sitename">
-				<a href="http://localhost:8080/Familie">De nazaten van Herman Roest en Saar Bos</a>
-			</h1>
+			<img src="images/Echtpaar.jpg" alt="Echtpaar" height="200" id="top-links"></img>
+			<img src="images/Zwieten.jpg" alt="Huis te Zwieten" height="200" id="top-rechts"></img>
+			<div id="top-midden">
+				<img src="images/Header.png" alt="Familiewapen" height="200"></img>
+				<h1 id="sitename">
+					<a href="http://localhost:8080/Familie">De nazaten van Herman Roest en Saar Bos</a>
+				</h1>
+			</div>
+			<div id="menus">
+				<ul id="topmenu">
+					<li id="home"             class="active"  ><a href="#" onclick="home()"      >Home             </a></li>
+					<li id="overons"          class="inactive"><a href="#" onclick="overOns()"   >Over ons         </a></li>
+					<li id="namenlijst"       class="inactive"><a href="#" onclick="namenLijst()">Alle familieleden</a></li>
+					<li id="persoonsgegevens" class="inactive"><a href="#" onclick="persGeg()"   >Persoonsgegevens </a></li>
+					<li id="relaties"         class="inactive"><a href="#" onclick="relaties()"  >Relaties         </a></li>
+				</ul>
+			</div>
 		</div>
-		<div id="menus">
-			<ul id="topmenu">
-				<li id="home"             class="active"  ><a href="#" onclick="home()"      >Home             </a></li>
-				<li id="overons"          class="inactive"><a href="#" onclick="overOns()"   >Over ons         </a></li>
-				<li id="namenlijst"       class="inactive"><a href="#" onclick="namenLijst()">Alle familieleden</a></li>
-				<li id="persoonsgegevens" class="inactive"><a href="#" onclick="persGeg()"   >Persoonsgegevens </a></li>
-				<li id="relaties"         class="inactive"><a href="#" onclick="relaties()"  >Relaties         </a></li>
-			</ul>
-		</div>
-		<!-- div id="header"></div> -->
 		<div id="content">
 			<div id="mainpage"></div>
 			<div id="sidebar">
@@ -48,9 +52,6 @@
 			<div class="clear"></div>
 			<div></div>
 		</div>
-			<div id="footer">
-				<p>Copyright &copy; 2016 Familie|<a href="#">Sitemap</a></p>
-			</div>
 	</div>
 </body>
 </html>
