@@ -11,6 +11,7 @@ a:hover {
 }
 body {
 	background: #FFFFFF;
+	height: 100%
 }
 .style_2 {
 	font-size: 7px;
@@ -37,30 +38,30 @@ body {
 	background:url(images/Header.png) no-repeat center top; 
 }
 h1  {
-	height: 200px;
+/*	height: 200px;*/
 	color:#B32C0E;
 	font-weight:bold;
 	font-family: Arial, Helvetica, sans-serif;
 	text-align: center;
-	padding-top:60px;
 }
 h2, h3, h4, h5 {
 	color:#B32C0E;
 	font-weight:bold;
 	font-family: Arial, Helvetica, sans-serif;
 }
-#sitename a{
+#sitename {
 	text-decoration :none;
 	font-size:24px;
 	color:#000000;
-	height:100px;
+/*	height:100px;*/
+	padding-top:120px;
 }
 #topmenu {
 	display:block;
 	list-style:none;
 	padding:0 0px 0px 0px;
 	float: left;
-	width: 75%;
+	width: 90%;
 	background-color: black;
 }
 #topmenu li {
@@ -69,15 +70,6 @@ h2, h3, h4, h5 {
 #topmenu a {
 	display:block;
 	float:left;
-	height:28px;
-	margin:0px 0px 0px 0px;
-	text-decoration:none;
-	padding:9px 15px 0px 15px;
-	text-align:center;
-}
-#topmenu b {
-	display:block;
-	float:right;
 	height:28px;
 	margin:0px 0px 0px 0px;
 	text-decoration:none;
@@ -100,25 +92,31 @@ h2, h3, h4, h5 {
 /*	background:url(images/Header.png) no-repeat center top;*/
 	clear: both;
 }
+#content {
+	background-color: #FFFFFF;
+	padding-top: 36px;
+}
 #mainpage {
-	width:60%;
-	padding:5px 5px 5px 0px;
-	height:550px
+	width:70%;
+	padding:0px 5px 5px 0px;
+	height: 650px;
 }
 #mainpage h2 {
 	font-size:18px;
 	padding-top: 20px;
 	padding-bottom: 5px;
 	border-bottom: 1px solid #B52E10;
+	text-align: center;
 }
 #mainpage p {
 	line-height:10px;
-	margin:10px 0px 10px 0px;
+	margin:10px 0px 0px 0px;
 }
 #sidebar {
 	margin:0px 0px 0px 0px;
 	width: 225px;
 	float: right;
+	width: 30%;
 }
 #sidebarcontents {
 	padding:5px 0px 5px 0px;
@@ -151,7 +149,7 @@ menu li ul {
 	text-decoration:none; 
 	color:#333333;
 }
-#menu li ul  a:hover {
+#menu li ul a:hover {
 	background:#F8F9F2;
 	color:#B32C0E;
 }
@@ -159,10 +157,10 @@ menu li ul {
 	clear:both;
 }
 #footer {
-	margin:0 auto;
-	width:100%;
+/*	margin:0 auto;*/
+	width:90%;
 	height:75px;
-	padding:10px;
+	padding:0px;
 	color:#FFFFFF;
 	text-align: center;
 	background:#333333;
@@ -170,7 +168,6 @@ menu li ul {
 	font-size: 11px;
 	clear: both;
 }
-
 
 /* Alle familieleden */
 #namen {
@@ -231,6 +228,15 @@ menu li ul {
 	display:block;
 	 clear:right;
 }
+#content #mainpage ol {
+	margin:10px 10px 10px 25px;}
+#content #mainpage ol li {
+	padding:5px 5px 5px 20px;}
+#content #mainpage ul li {
+	display:block; 
+	padding:0px; 
+	border-bottom: dashed 1px #D6E4A7;}
+
 #mainpage blockquote {
 	background:#efefef;
 	display:block; 
@@ -249,17 +255,6 @@ menu li ul {
 	font-size:16px;}
 .hide {
 	display:none;}
-#content {
-	background-color: #FFFFFF;
-}
-#content #mainpage ol {
-	margin:10px 10px 10px 25px;}
-#content #mainpage ol li {
-	padding:5px 5px 5px 20px;}
-#content #mainpage ul li {
-	display:block; 
-	padding:0px; 
-	border-bottom: dashed 1px #D6E4A7;}
 #detail td {
             border: solid 1px #C8C8FF;
             list-style-type: none;
@@ -278,4 +273,13 @@ menu li ul {
 	padding-left:100px;
 	padding-top:25px;
 	}
+#topmenu b {
+	display:block;
+	float:right;
+	height:28px;
+	margin:0px 0px 0px 0px;
+	text-decoration:none;
+	padding:9px 15px 0px 15px;
+	text-align:center;
+} 
 */
