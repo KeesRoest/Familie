@@ -198,6 +198,29 @@ menu li ul {
 .foutmelding {
 	color:#B32C0E;	
 }
+
+/* Relaties */
+#up { 
+   width:90%; 
+   height:100px;
+   float:top; 
+}
+#left { 
+   width:30%; 
+   height:400px;
+   float:left; 
+}
+#center { 
+   width:30%; 
+   height:400px;
+   float:left; 
+}
+#right { 
+   width:30%; 
+   height:400px;
+   float:left; 
+}
+
 /**/
 /*
 .clearleft {
