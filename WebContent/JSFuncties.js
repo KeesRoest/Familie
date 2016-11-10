@@ -540,7 +540,7 @@ function namen() {
 			var json = JSON.parse(this.responseText)
 			var text = "";
 			for (var i = 0; i < json.length; i++) {
-				text += "<option>"
+				text += '<option value="' + json[i].id + '"' + '>'
 						+ json[i].roepnaam + " " + json[i].tussenvoegsel
 						+ " " + json[i].achternaam
 						+ "</option>";
@@ -560,7 +560,7 @@ function relatietypes() {
 			var json = JSON.parse(this.responseText)
 			var text = "";
 			for (var i = 0; i < json.length; i++) {
-				text += "<option>"
+				text += '<option value="' + json[i].id + '"' + '>'
 						+ json[i].relationType
 						+ "</option>";
 			}
@@ -569,6 +569,11 @@ function relatietypes() {
 	};
 	xhttp.open("GET", "rest/relationtype/all", true);
 	xhttp.send();
+}
+
+function setRelation() {
+	var midden = document.getElementById("links").value;
+	alert(midden);
 }
 
 function setFocus(id) {
