@@ -526,6 +526,7 @@ function relaties() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("mainpage").innerHTML = this.responseText;
 			namen();
+			relatietypes();
 		}
 	};
 	xhttp.open("GET", "relaties.html", true);
@@ -539,18 +540,40 @@ function namen() {
 			var json = JSON.parse(this.responseText)
 			var text = "";
 			for (var i = 0; i < json.length; i++) {
-				text += "<option>"
+				text += '<option value="' + json[i].id + '"' + '>'
 						+ json[i].roepnaam + " " + json[i].tussenvoegsel
 						+ " " + json[i].achternaam
 						+ "</option>";
 			}
 			document.getElementById("linkerlijst").innerHTML = text;
 			document.getElementById("rechterlijst").innerHTML = text;
-			document.getElementById("middellijst").innerHTML = text;
 		}
 	};
 	xhttp.open("GET", "rest/person/all", true);
 	xhttp.send();
+}
+
+function relatietypes() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var json = JSON.parse(this.responseText)
+			var text = "";
+			for (var i = 0; i < json.length; i++) {
+				text += '<option value="' + json[i].id + '"' + '>'
+						+ json[i].relationType
+						+ "</option>";
+			}
+			document.getElementById("middellijst").innerHTML = text;
+		}
+	};
+	xhttp.open("GET", "rest/relationtype/all", true);
+	xhttp.send();
+}
+
+function setRelation() {
+	var midden = document.getElementById("links").value;
+	alert(midden);
 }
 
 function setFocus(id) {
