@@ -3,3 +3,5 @@ INSERT INTO person(id, achternaam, doopnaam, email, geboortedatum, geboorteplaat
 INSERT INTO relationtype(id, partner, relationtype) VALUES(1, true, 'Is gehuwd met');
 INSERT INTO relationtype(id, partner, relationtype) VALUES(2, true, 'Is partner van');
 INSERT INTO relationtype(id, partner, relationtype) VALUES(3, false, 'Is kind van');
+INSERT INTO relation(id, relatietype, partner, person1_id, person2_id) VALUES(10001, 'Is gehuwd met', true, 1001, 1002);
+INSERT INTO relation(id, relatietype, partner, person1_id, person2_id) VALUES(10002, 'Is gehuwd met', true, 1002, 1001);

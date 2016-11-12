@@ -19,4 +19,9 @@ public class RelationService {
 		return person;
 	}
 	
+	public void setRelation(Boolean partner, String relationType, Long person1_id, Long person2_id) {
+		relationDAO.setRelation(partner, relationType, person1_id, person2_id);
+		return;
+	}
+	
 }

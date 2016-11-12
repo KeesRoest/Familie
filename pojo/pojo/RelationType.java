@@ -28,11 +28,12 @@ public class RelationType  implements Serializable {
 		this.relationType = relationType;
 	}
 
-	public Boolean isPartner() {
+	public Boolean getPartner() {
 		return partner;
 	}
 
 	public void setPartner(Boolean partner) {
 		this.partner = partner;
 	}
+
 }

@@ -560,7 +560,7 @@ function relatietypes() {
 			var json = JSON.parse(this.responseText)
 			var text = "";
 			for (var i = 0; i < json.length; i++) {
-				text += '<option value="' + json[i].id + '"' + '>'
+				text += '<option value="' + json[i].partner + '"' + '>'
 						+ json[i].relationType
 						+ "</option>";
 			}
@@ -572,8 +572,20 @@ function relatietypes() {
 }
 
 function setRelation() {
-	var midden = document.getElementById("links").value;
-	alert(midden);
+	var doc         = document.getElementById("midden");
+	var partner     = doc.value;
+	var relatietype = doc.options[doc.selectedIndex].text;
+	var person1_id  = document.getElementById("links").value;
+	var person2_id  = document.getElementById("rechts").value;
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 204) {
+			alert("Relatie opgeslagen");
+		}
+	}
+	xhttp.open("POST", "rest/relation/add/" + partner + "/" + relatietype + "/" + person1_id + "/" + person2_id, true);
+	xhttp.setRequestHeader("Content-Type", "application/json");
+	xhttp.send();
 }
 
 function setFocus(id) {
