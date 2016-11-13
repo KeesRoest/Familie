@@ -57,8 +57,8 @@ function namenLijst() {
 
 function persoon(id) {
 	var text = '<table id="detail">';
-	var xhttp1 = new XMLHttpRequest();
-	xhttp1.onreadystatechange = function() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var json = JSON.parse(this.responseText);
 			text += "<tr><th>ID: </th><th>" + json.id + "</th></tr>";
@@ -97,28 +97,49 @@ function persoon(id) {
 					+ "</td></tr>";
 			text += "<tr><td>E-mail adres    : </td><td>" + json.email
 					+ "</td></tr>";
+			
+			relatie(id, text);
 
-			var xhttp2 = new XMLHttpRequest();
-			xhttp2.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					var json = JSON.parse(this.responseText);
-					text += "<tr><td>Burgerlijke staat : </td><td>Gehuwd met : " + json.roepnaam + " "
-							+ json.tussenvoegsel + " " + json.achternaam + "</td></tr>";
-					text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
-					document.getElementById("mainpage").innerHTML = text;
-				} else if (this.readyState == 4 && this.status == 412) {
-					text += "<tr><td>Burgerlijke staat : </td><td>Ongehuwd</td></tr>";
-					text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
-					document.getElementById("mainpage").innerHTML = text;
-				}
-			}
-			xhttp2.open("GET", "rest/relation/partner/" + id, true);
-			xhttp2.send();
-		
 		}
 	}
-	xhttp1.open("GET", "rest/person/one/" + id, true);
-	xhttp1.send();
+	xhttp.open("GET", "rest/person/one/" + id, true);
+	xhttp.send();
+
+}
+
+function relatie(id, text) {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var json = JSON.parse(this.responseText);
+			text += "<tr><td>Burgerlijke staat : </td><td>" + json.relatieType;
+			partner(id, text);
+			text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
+			document.getElementById("mainpage").innerHTML = text;
+		} else if (this.readyState == 4 && this.status == 412) {
+			text += "<tr><td>Burgerlijke staat : </td><td>Ongehuwd</td></tr>";
+			text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
+			document.getElementById("mainpage").innerHTML = text;
+		}
+	}
+	xhttp.open("GET", "rest/relation/" + id, true);
+	xhttp.send();
+
+}
+
+function partner(id, text) {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var json = JSON.parse(this.responseText);
+			text += " : " + json.roepnaam + " "
+					+ json.tussenvoegsel + " " + json.achternaam + "</td></tr>";
+			text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
+			document.getElementById("mainpage").innerHTML = text;
+		}
+	}
+	xhttp.open("GET", "rest/relation/partner/" + id, true);
+	xhttp.send();
 
 }
 
@@ -562,7 +583,7 @@ function relatietypes() {
 			var json = JSON.parse(this.responseText)
 			var text = "";
 			for (var i = 0; i < json.length; i++) {
-				text += '<option value="' + json[i].id + '"' + '>'
+				text += '<option value="' + json[i].partner + '"' + '>'
 						+ json[i].relationType
 						+ "</option>";
 			}
@@ -574,8 +595,20 @@ function relatietypes() {
 }
 
 function setRelation() {
-	var midden = document.getElementById("links").value;
-	alert(midden);
+	var doc         = document.getElementById("midden");
+	var partner     = doc.value;
+	var relatietype = doc.options[doc.selectedIndex].text;
+	var person1_id  = document.getElementById("links").value;
+	var person2_id  = document.getElementById("rechts").value;
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 204) {
+			alert("Relatie opgeslagen");
+		}
+	}
+	xhttp.open("POST", "rest/relation/add/" + partner + "/" + relatietype + "/" + person1_id + "/" + person2_id, true);
+	xhttp.setRequestHeader("Content-Type", "application/json");
+	xhttp.send();
 }
 
 function setFocus(id) {
