@@ -12,6 +12,7 @@ a:hover {
 body {
 	background: #FFFFFF;
 	min-height: 100%;
+	display: block;
 }
 .style_2 {
 	font-size: 7px;
@@ -35,6 +36,7 @@ body {
 #topbar{
 	background-color: #21201D;
 	text-align: center;
+	display: bock;
 }
 #top-links {
     float: left;
@@ -50,7 +52,8 @@ img {
 }
 h1  {
 	color:#B32C0E;
-	font-weight:bold;
+	font-size: 40px;
+	font-weight: bold;
 	font-family: Arial, Helvetica, sans-serif;
 	text-align: center;
 }
@@ -66,9 +69,8 @@ h2, h3, h4, h5 {
 	padding-top:120px;
 }
 #topmenu {
-	display:block;
 	list-style:none;
-	padding:0 0px 0px 0px;
+	padding:0px 0px 0px 0px;
 	float: left;
 	width: 100%;
 	background-color: black;
@@ -77,7 +79,6 @@ h2, h3, h4, h5 {
 	display:inline;
 }
 #topmenu a {
-	display:block;
 	float:left;
 	height:28px;
 	margin:0px 0px 0px 0px;
@@ -98,17 +99,23 @@ h2, h3, h4, h5 {
 }
 #header{
 	height:189px;
-/*	background:url(images/Header.png) no-repeat center top;*/
 	clear: both;
 }
+.floatright{
+	float: right;
+    margin-right: 75px;
+}
 #content {
-	width:80%;
+	width:90%;
 	background-color: #FFFFFF;
-	padding-top: 36px;
+	padding-left: 6%;
 }
 #mainpage {
-	padding:0px 5px 5px 50px;
-	height: 650px;
+	display: inline;
+	height: 850px;
+	width: 85%;
+	float: left;
+	box-sizing: border-box;
 }
 #mainpage h2 {
 	font-size:18px;
@@ -123,9 +130,9 @@ h2, h3, h4, h5 {
 }
 #sidebar {
 	margin:0px 0px 0px 0px;
-	width: 225px;
 	float: right;
-	width: 30%;
+	width: 15%;
+	padding-top: 100px;
 }
 #sidebarcontents {
 	padding:5px 0px 5px 0px;
@@ -166,31 +173,32 @@ menu li ul {
 	clear:both;
 }
 #footer {
-/*	margin:0 auto;*/
-	width:90%;
-	height:75px;
-	padding:0px;
+	width:100%;
+	height:50px;
+	padding:0px 5px 5px 0px;
 	color:#FFFFFF;
 	text-align: center;
-	background:#333333;
+	background:#21201D;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 11px;
 	clear: both;
 }
 
 /* Alle familieleden */
-#namen {
-	border: solid 1px #C8C8FF;
+#namen, .namenth, .namentd {
+	width: 40%;
+    border-collapse: collapse;
+    padding: 4px;
+    text-align: left;
+    border-bottom: 1px solid black;
 }
-#namen p.bg0 {
-	padding: 5px;
-	background-color: #c0c0c0;
+.namenth{
+	text-align: left;
+	text: bold;
 }
-#namen p.bg1 {
-	padding: 5px;
-	background-color: #c0c0c0;
+.namentr:nth-child(even){
+	background-color: #f2f2f2
 }
-
 /* Persoonsgegevens */
 .persgeg {
 	width:80%;
@@ -206,11 +214,6 @@ menu li ul {
 }
 
 /* Relaties */
-#up { 
-   width:90%; 
-   height:100px;
-   float:top; 
-}
 #left { 
    width:30%; 
    height:400px;

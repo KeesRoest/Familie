@@ -38,14 +38,16 @@ function namenLijst() {
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var json = JSON.parse(this.responseText)
-			var text = '<div id="namen">';
+			var text = '<table id="namen">';
+			text += "<tr class='namentr'><th class='namenth'>Naam</th><th class='namenth'>Geboortedatum</th></tr>";
 			for (var i = 0; i < json.length; i++) {
-				text += '<p class="bg' + i % 2 + '">'
+				text += '<tr class="namentr"><td class="namentd"' + i % 2 + '">'
 						+ '<a href="#" onclick="persoon(' + json[i].id + ')"'
 						+ '>' + json[i].roepnaam + " " + json[i].tussenvoegsel
-						+ " " + json[i].achternaam + "</a></p>";
+						+ " " + json[i].achternaam + "</a></td>";
+				text += "<td class='namentd'>" + json[i].geboortedatum + "</td></tr>";
 			}
-			text += "</div>";
+			text += "</table>";
 			document.getElementById("mainpage").innerHTML = text;
 		}
 	};
