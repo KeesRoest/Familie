@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import pojo.Person;
+import pojo.Relation;
 import service.RelationService;
 
 @Path("/relation")
@@ -17,6 +18,17 @@ public class RelationResource {
 
 	@Inject
 	private RelationService relationService;
+
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Relation getRelation(@PathParam("id") Long id) {
+		Relation relation = relationService.getRelation(id);
+		if (relation == null) {
+			throw new NoPartnerException("Geen partner gevonden");
+		}
+		return relation;
+	}
 
 	@GET
 	@Path("/partner/{id}")

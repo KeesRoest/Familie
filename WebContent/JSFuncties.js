@@ -55,8 +55,8 @@ function namenLijst() {
 
 function persoon(id) {
 	var text = '<table id="detail">';
-	var xhttp1 = new XMLHttpRequest();
-	xhttp1.onreadystatechange = function() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var json = JSON.parse(this.responseText);
 			text += "<tr><th>ID: </th><th>" + json.id + "</th></tr>";
@@ -95,28 +95,49 @@ function persoon(id) {
 					+ "</td></tr>";
 			text += "<tr><td>E-mail adres    : </td><td>" + json.email
 					+ "</td></tr>";
+			
+			relatie(id, text);
 
-			var xhttp2 = new XMLHttpRequest();
-			xhttp2.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					var json = JSON.parse(this.responseText);
-					text += "<tr><td>Burgerlijke staat : </td><td>Gehuwd met : " + json.roepnaam + " "
-							+ json.tussenvoegsel + " " + json.achternaam + "</td></tr>";
-					text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
-					document.getElementById("mainpage").innerHTML = text;
-				} else if (this.readyState == 4 && this.status == 412) {
-					text += "<tr><td>Burgerlijke staat : </td><td>Ongehuwd</td></tr>";
-					text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
-					document.getElementById("mainpage").innerHTML = text;
-				}
-			}
-			xhttp2.open("GET", "rest/relation/partner/" + id, true);
-			xhttp2.send();
-		
 		}
 	}
-	xhttp1.open("GET", "rest/person/one/" + id, true);
-	xhttp1.send();
+	xhttp.open("GET", "rest/person/one/" + id, true);
+	xhttp.send();
+
+}
+
+function relatie(id, text) {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var json = JSON.parse(this.responseText);
+			text += "<tr><td>Burgerlijke staat : </td><td>" + json.relatieType;
+			partner(id, text);
+			text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
+			document.getElementById("mainpage").innerHTML = text;
+		} else if (this.readyState == 4 && this.status == 412) {
+			text += "<tr><td>Burgerlijke staat : </td><td>Ongehuwd</td></tr>";
+			text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
+			document.getElementById("mainpage").innerHTML = text;
+		}
+	}
+	xhttp.open("GET", "rest/relation/" + id, true);
+	xhttp.send();
+
+}
+
+function partner(id, text) {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var json = JSON.parse(this.responseText);
+			text += " : " + json.roepnaam + " "
+					+ json.tussenvoegsel + " " + json.achternaam + "</td></tr>";
+			text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
+			document.getElementById("mainpage").innerHTML = text;
+		}
+	}
+	xhttp.open("GET", "rest/relation/partner/" + id, true);
+	xhttp.send();
 
 }
 
