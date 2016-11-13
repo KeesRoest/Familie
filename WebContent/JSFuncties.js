@@ -28,7 +28,6 @@ function overOns() {
 		}
 	};
 	xhttp.open("GET", "rest/overOns", true);
-	// xhttp.open("GET", "overOns.html", true);
 	xhttp.send();
 }
 
