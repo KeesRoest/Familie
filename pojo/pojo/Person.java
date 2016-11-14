@@ -52,11 +52,11 @@ public class Person implements Serializable {
 		setPostcode(aPostcode);
 		setPlaatsnaam(aPlaatsnaam);
 		setStaat(aStaat);
+		setOverlijdensdatum(aOverlijdensdatum);
 		setLand(aLand);
 		setTelefoon(aTelefoon);
 		setGeboortedatum(aGeboortedatum);
 		setGeboorteplaats(aGeboorteplaats);
-		setOverlijdensdatum(aOverlijdensdatum);
 		setEmail(aEmail);
 		setPassword(aPassword);
 	}
@@ -94,7 +94,12 @@ public class Person implements Serializable {
 	}
 
 	public String getTussenvoegsel() {
-		return tussenvoegsel;
+		if (tussenvoegsel != null) {
+			return tussenvoegsel;
+		}
+		else {
+			return "";
+		}
 	}
 
 	public void setTussenvoegsel(String tussenvoegsel) {
@@ -102,15 +107,25 @@ public class Person implements Serializable {
 	}
 
 	public String getStraatnaam() {
-		return straatnaam;
+		if (straatnaam != null) {
+			return straatnaam;
+		}
+		else {
+			return "";
+		}
 	}
 
 	public void setStraatnaam(String straatnaam) {
 		this.straatnaam = straatnaam;
 	}
 
-	public int getHuisnr() {
-		return huisnr;
+	public String getHuisnr() {
+		if (huisnr != 0) {
+			return "" + huisnr;
+		}
+		else {
+			return "";
+		}
 	}
 
 	public void setHuisnr(int huisnr) {
@@ -118,7 +133,12 @@ public class Person implements Serializable {
 	}
 
 	public String getHuisnrtoev() {
-		return huisnrtoev;
+		if (huisnrtoev != null) {
+			return huisnrtoev;
+		}
+		else {
+			return "";
+		}
 	}
 
 	public void setHuisnrtoev(String huisnrtoev) {
@@ -126,7 +146,12 @@ public class Person implements Serializable {
 	}
 
 	public String getPostcode() {
-		return postcode;
+		if (postcode != null) {
+			return postcode;
+		}
+		else {
+			return "";
+		}
 	}
 
 	public void setPostcode(String postcode) {
@@ -134,7 +159,12 @@ public class Person implements Serializable {
 	}
 
 	public String getPlaatsnaam() {
-		return plaatsnaam;
+		if (plaatsnaam != null) {
+			return plaatsnaam;
+		}
+		else {
+			return "";
+		}
 	}
 
 	public void setPlaatsnaam(String plaatsnaam) {
@@ -142,7 +172,12 @@ public class Person implements Serializable {
 	}
 
 	public String getStaat() {
-		return staat;
+		if (staat != null) {
+			return staat;
+		}
+		else {
+			return "";
+		}
 	}
 
 	public void setStaat(String staat) {
@@ -154,11 +189,21 @@ public class Person implements Serializable {
 	}
 
 	public void setLand(String land) {
-		this.land = land;
+		if (overlijdensdatum != null) {
+			this.land = "";
+		}
+		else {
+			this.land = land;
+		}
 	}
 
 	public String getTelefoon() {
-		return telefoon;
+		if (telefoon != null) {
+			return telefoon;
+		}
+		else {
+			return "";
+		}
 	}
 
 	public void setTelefoon(String telefoon) {
@@ -201,7 +246,12 @@ public class Person implements Serializable {
 	}
 
 	public String getEmail() {
-		return email;
+		if (email != null) {
+			return email;
+		}
+		else {
+			return "";
+		}
 	}
 
 	public void setEmail(String email) {

@@ -61,23 +61,23 @@ function persoon(id) {
 		if (this.readyState == 4 && this.status == 200) {
 			var json = JSON.parse(this.responseText);
 			text += "<tr class=detailtr><th class=detailth >ID: </th><th class=detailth>" + json.id + "</th></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Geslacht</td>	 <td class=detailtd>" + json.geslacht 			+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Doopnaam</td>	 <td class=detailtd>" + json.doopnaam			+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Roepnaam</td>	 <td class=detailtd>" + json.roepnaam			+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Tussenvoegsel</td><td class=detailtd>" + json.tussenvoegsel		+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Achternaam</td>	 <td class=detailtd>" + json.achternaam			+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Straatnaam</td>	 <td class=detailtd>" + json.straatnaam			+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Huisnummer</td>	 <td class=detailtd>" + json.huisnr				+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Huisnr toev.</td> <td class=detailtd>" + json.huisnrtoev			+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Postcode</td>	 <td class=detailtd>" + json.postcode			+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Plaatsnaam</td>	 <td class=detailtd>" + json.plaatsnaam			+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Staat</td>		 <td class=detailtd>" + json.staat				+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Land</td>		 <td class=detailtd>" + json.land				+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Telefoon</td>	 <td class=detailtd>" + json.telefoon			+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Geboortedatum</td><td class=detailtd>" + json.geboortedatum		+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Geboorteplaats</td><td class=detailtd>" + json.geboorteplaats	+ "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Datum overlijden</td><td class=detailtd>" + json.overlijdensdatum + "</td></tr>";
-			text += "<tr class=detailtr><td class=detailtd>E-mail adres</td> <td class=detailtd>" + json.email				+ "</td></tr>";
+			text += "<tr class=detailtr><td class=detailtd>Geslacht</td>	       <td class=detailtd>" + json.geslacht 		+ "</td></tr>";
+			text += "<tr class=detailtr><td class=detailtd>Naam</td>    	       <td class=detailtd>" + json.doopnaam + "("
+			                                                                                            + json.roepnaam + ") "
+			                                                                                            + json.tussenvoegsel + " "
+         			                                                                                    + json.achternaam        + "</td></tr>";
+			text += "<tr class=detailtr><td class=detailtd>Adres</td>	           <td class=detailtd>" + json.straatnaam + " "
+		        	                                                                                    + json.huisnr     + " "
+			                                                                                            + json.huisnrtoev        + "</td></tr>";
+			text += "<tr class=detailtr><td class=detailtd>Postcode/woonplaats</td><td class=detailtd>" + json.postcode + " "
+			                                                                                            + json.plaatsnaam
+			text += "<tr class=detailtr><td class=detailtd>Staat</td>		       <td class=detailtd>" + json.staat			+ "</td></tr>";
+			text += "<tr class=detailtr><td class=detailtd>Land</td>		       <td class=detailtd>" + json.land				+ "</td></tr>";
+			text += "<tr class=detailtr><td class=detailtd>Telefoon</td>	       <td class=detailtd>" + json.telefoon			+ "</td></tr>";
+			text += "<tr class=detailtr><td class=detailtd>Geboortedatum</td>      <td class=detailtd>" + json.geboortedatum	+ "</td></tr>";
+			text += "<tr class=detailtr><td class=detailtd>Geboorteplaats</td>     <td class=detailtd>" + json.geboorteplaats	+ "</td></tr>";
+			text += "<tr class=detailtr><td class=detailtd>Datum overlijden</td>   <td class=detailtd>" + json.overlijdensdatum + "</td></tr>";
+			text += "<tr class=detailtr><td class=detailtd>E-mail adres</td>       <td class=detailtd>" + json.email			+ "</td></tr>";
 			relatie(id, text);
 
 		}
