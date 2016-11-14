@@ -216,6 +216,8 @@ menu li ul {
 .detailtr:nth-child(even){
 	background-color: #f2f2f2
 }
+.detailtr:nth-child(odd){
+	background-color: #f2f2f2
 	
 }
 /* Persoonsgegevens */
