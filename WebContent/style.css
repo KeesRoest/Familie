@@ -203,7 +203,6 @@ menu li ul {
 }
 /* Detailinformatie familielid */
 .detailth, .detailtd {
-	width: 40%;
     border-collapse: collapse;
     padding: 4px;
     text-align: left;
