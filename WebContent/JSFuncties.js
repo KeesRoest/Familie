@@ -3,7 +3,6 @@
  */
 function activeMenuItem(menuItem) {
 	var x = document.getElementById("topmenu").getElementsByClassName("active");
-	alert(x[0].className);
 	if (x[0].className == "active floatright") {
 		x[0].className = "inactive floatright";
 	}
