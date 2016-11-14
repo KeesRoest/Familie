@@ -61,7 +61,15 @@ public class RelationDAO {
 		}
 		List<Relation> resultlist = em.createQuery(sql, Relation.class).getResultList();
 		for (Relation relatie : resultlist) {
-			em.remove(relatie);
+			if (partner == true) {
+				em.remove(relatie);
+			}
+			else {
+				Person personOld = relatie.getPerson2();
+				if (personOld.getGeslacht() == person2.getGeslacht()) {
+					em.remove(relatie);
+				}
+			}
 		}
 		Relation relation = new Relation(relationType, partner, person1, person2);
 		em.persist(relation);
