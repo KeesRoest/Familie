@@ -43,6 +43,7 @@ body {
 }
 #top-midden {
 	display: inline-block;
+	margin-top: 5px;
 }
 #top-rechts {
     float: right;
@@ -199,6 +200,23 @@ menu li ul {
 }
 .namentr:nth-child(even){
 	background-color: #f2f2f2
+}
+/* Detailinformatie familielid */
+.detailth, .detailtd {
+	width: 40%;
+    border-collapse: collapse;
+    padding: 4px;
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+.detailth{
+	text-align: left;
+	text: bold;
+}
+.detailtr:nth-child(even){
+	background-color: #f2f2f2
+}
+	
 }
 /* Persoonsgegevens */
 .persgeg {
