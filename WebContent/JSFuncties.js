@@ -3,6 +3,7 @@
  */
 function activeMenuItem(menuItem) {
 	var x = document.getElementById("topmenu").getElementsByClassName("active");
+	alert(x[0].className);
 	x[0].className = "inactive";
 	document.getElementById(menuItem).className = "active";
 }
