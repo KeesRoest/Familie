@@ -4,8 +4,18 @@
 function activeMenuItem(menuItem) {
 	var x = document.getElementById("topmenu").getElementsByClassName("active");
 	alert(x[0].className);
-	x[0].className = "inactive";
-	document.getElementById(menuItem).className = "active";
+	if (x[0].className == "active floatright") {
+		x[0].className = "inactive floatright";
+	}
+	else {
+		x[0].className = "inactive";
+	}
+	if (document.getElementById(menuItem).className == "inactive floatright") {
+		document.getElementById(menuItem).className = "active floatright";
+	}
+	else {
+		document.getElementById(menuItem).className = "active";
+	}
 }
 
 function home() {
