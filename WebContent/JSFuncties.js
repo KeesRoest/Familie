@@ -2,6 +2,10 @@
  * 
  */
 function activeMenuItem(menuItem) {
+	$("#topmenu .active").removeClass("active");
+	$("#" + menuItem).addClass("active");
+
+/* Oude code voor jQuery
 	var x = document.getElementById("topmenu").getElementsByClassName("active");
 	if (x[0].className == "active floatright") {
 		x[0].className = "inactive floatright";
@@ -15,10 +19,16 @@ function activeMenuItem(menuItem) {
 	else {
 		document.getElementById(menuItem).className = "active";
 	}
+*/
 }
 
 function home() {
-	activeMenuItem("home")
+	activeMenuItem("home");
+    $.get("home.html", function(data) {
+    	$("#" + "mainpage").html(data);
+    });
+
+/* Oude code voor jQuery
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -27,10 +37,16 @@ function home() {
 	};
 	xhttp.open("GET", "home.html", true);
 	xhttp.send();
+*/
 }
 
 function overOns() {
-	activeMenuItem("overons")
+	activeMenuItem("overons");
+    $.get("rest/overOns", function(data) {
+    	$("#" + "mainpage").html(data);
+    });
+
+/* Oude code voor jQuery
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -39,10 +55,26 @@ function overOns() {
 	};
 	xhttp.open("GET", "rest/overOns", true);
 	xhttp.send();
+*/
 }
 
 function namenLijst() {
 	activeMenuItem("namenlijst")
+    $.getJSON("rest/person/all", function(data) {
+		var text = '<table id="namen">';
+		text += "<tr class='namentr'><th class='namenth'>Naam</th><th class='namenth'>Geboortedatum</th></tr>";
+		for (var i = 0; i < data.length; i++) {
+			text += '<tr class="namentr"><td class="namentd"' + i % 2 + '">'
+					+ '<a href="#" onclick="persoon(' + data[i].id + ')"'
+					+ '>' + data[i].roepnaam + " " + data[i].tussenvoegsel
+					+ " " + data[i].achternaam + "</a></td>";
+			text += "<td class='namentd'>" + data[i].geboortedatum + "</td></tr>";
+		}
+		text += "</table>";
+    	$("#" + "mainpage").html(text);
+    });
+	
+/* Oude code voor jQuery
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -62,6 +94,7 @@ function namenLijst() {
 	};
 	xhttp.open("GET", "rest/person/all", true);
 	xhttp.send();
+*/
 }
 
 function persoon(id) {
