@@ -638,6 +638,7 @@ function stamboom() {
 	activeMenuItem("stamboom");
     $.get("rest/stamboom", function(data) {
     	$("#" + "mainpage").html(data);
+    })
 }
 
 function contact() {
