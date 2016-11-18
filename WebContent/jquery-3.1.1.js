@@ -10213,8 +10213,5 @@ if ( !noGlobal ) {
 }
 
 
-
-
-
 return jQuery;
 } );

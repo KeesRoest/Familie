@@ -1,7 +1,7 @@
 /**
  * 
  */
-function activeMenuItem(menuItem) {
+	function activeMenuItem(menuItem) {
 	$("#topmenu .active").removeClass("active");
 	$("#" + menuItem).addClass("active");
 
@@ -103,8 +103,6 @@ function persoon(id) {
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var json = JSON.parse(this.responseText);
-			text += "<tr class=detailtr><th class=detailth >ID: </th><th class=detailth>" + json.id + "</th></tr>";
-			text += "<tr class=detailtr><td class=detailtd>Geslacht</td>	       <td class=detailtd>" + json.geslacht 		+ "</td></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Naam</td>    	       <td class=detailtd>" + json.doopnaam + "("
 			                                                                                            + json.roepnaam + ") "
 			                                                                                            + json.tussenvoegsel + " "
@@ -117,6 +115,8 @@ function persoon(id) {
 			text += "<tr class=detailtr><td class=detailtd>Staat</td>		       <td class=detailtd>" + json.staat			+ "</td></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Land</td>		       <td class=detailtd>" + json.land				+ "</td></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Telefoon</td>	       <td class=detailtd>" + json.telefoon			+ "</td></tr>";
+			text += "<tr class=detailtr><th class=detailth >ID: </th><th class=detailth>" + json.id + "</th></tr>";
+			text += "<tr class=detailtr><td class=detailtd>Geslacht</td>	       <td class=detailtd>" + json.geslacht 		+ "</td></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Geboortedatum</td>      <td class=detailtd>" + json.geboortedatum	+ "</td></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Geboorteplaats</td>     <td class=detailtd>" + json.geboorteplaats	+ "</td></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Datum overlijden</td>   <td class=detailtd>" + json.overlijdensdatum + "</td></tr>";
@@ -135,7 +135,7 @@ function relatie(id, text) {
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var json = JSON.parse(this.responseText);
-			text += "<tr class=detailtr><td class=detailtd>Burgerlijke staat : </td><td>" + json.relatieType;
+			text += "<tr class=detailtr><td class=detailtd>Burgerlijke staat : </td><td class=detailtd>" + json.relatieType;
 			partner(id, text);
 			text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
 			document.getElementById("mainpage").innerHTML = text;
