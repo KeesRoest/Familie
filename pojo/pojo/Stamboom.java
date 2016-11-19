@@ -1,33 +1,104 @@
 package pojo;
 
-import java.util.List;
+import java.io.Serializable;
 
-public class Stamboom {
-	private List<Person> ouders;
-	private List<Person> kinderen;
-	private Stamboom stamboom;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Stamboom  implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	
-	public List<Person> getOuders() {
-		return ouders;
+	private Long   id;
+	private String roepnaam;
+	private String tussenvoegsel;
+	private String achternaam;
+	
+	private Long   partnerId;
+	private String partnerRoepnaam;
+	private String partnerTussenvoegsel;
+	private String partnerAchternaam;
+	
+	public Stamboom() {
+		
+	}
+	public Stamboom(Long id, String roepnaam, String tussenvoegsel, String achternaam, Long partnerId, String partnerRoepnaam, String partnerTussenvoegsel, String partnerAchternaam) {
+		setId(id);
+		setRoepaam(roepnaam);
+		setTussenvoegsel(tussenvoegsel);
+		setAchternaam(achternaam);
+		setPartnerId(partnerId);
+		setPartnerRoepaam(partnerRoepnaam);
+		setPartnerTussenvoegsel(partnerTussenvoegsel);
+		setPartnerAchternaam(partnerAchternaam);
 	}
 
-	public void setOuders(List<Person> ouders) {
-		this.ouders = ouders;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
-	public List<Person> getKinderen() {
-		return kinderen;
+	public Long getId() {
+		return id;
 	}
 
-	public void setKinderen(List<Person> kinderen) {
-		this.kinderen = kinderen;
+	public void setRoepaam(String roepnaam) {
+		this.roepnaam = roepnaam;
+	}
+	
+	public String getRoepnaam() {
+		return roepnaam;
 	}
 
-	public Stamboom getStamboom() {
-		return stamboom;
+	public void setTussenvoegsel(String tussenvoegsel) {
+		this.tussenvoegsel = tussenvoegsel;
+	}
+	
+	public String getTussenvoegsel() {
+		return tussenvoegsel;
 	}
 
-	public void setStamboom(Stamboom stamboom) {
-		this.stamboom = stamboom;
+	public void setAchternaam(String achternaam) {
+		this.achternaam = achternaam;
+	}
+	
+	public String getAchternaam() {
+		return achternaam;
+	}
+
+	public void setPartnerId(Long partnerId) {
+		this.partnerId = partnerId;
+	}
+	
+	public Long getPartnerId() {
+		return partnerId;
+	}
+
+	public void setPartnerRoepaam(String partnerRoepnaam) {
+		this.partnerRoepnaam = partnerRoepnaam;
+	}
+	
+	public String getPartnerRoepnaam() {
+		return partnerRoepnaam;
+	}
+
+	public void setPartnerTussenvoegsel(String partnerTussenvoegsel) {
+		this.partnerTussenvoegsel = partnerTussenvoegsel;
+	}
+	
+	public String getPartnerTussenvoegsel() {
+		return partnerTussenvoegsel;
+	}
+
+	public void setPartnerAchternaam(String partnerAchternaam) {
+		this.partnerAchternaam = partnerAchternaam;
+	}
+	
+	public String getPartnerAchternaam() {
+		return partnerAchternaam;
 	}
 }

@@ -261,4 +261,9 @@ menu li ul {
    height:400px;
    float:left; 
 }
+/* Stamboom */
+#stamboompage h1 {
+	color:black;
+	border: solid 2px;
+}
 

@@ -9,43 +9,63 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import pojo.Stamboom;
+
 @Stateless
 public class StamboomDAO {
 
 	@PersistenceContext
 	private EntityManager em;
 	
-	public Long getFamilieOudste() {
+	public List<Stamboom> getFamilieOudste() {
 		String sql = "select "
-				   + "       s.persoon_id "
+				   + "       s.id"
+				   + ",      s.roepnaam"
+				   + ",      s.tussenvoegsel"
+				   + ",      s.achternaam "
+				   + ",      s.partnerId"
+				   + ",      s.partnerRoepnaam"
+				   + ",      s.partnerTussenvoegsel"
+				   + ",      s.partnerAchternaam "
 				   + "from "
 				   + "       ("
 				   + "        select "
-				   + "               p.id         as persoon_id"
-				   + "        ,      r.person2_id as partner_id"
+				   + "               p.id"
+				   + "        ,      p.roepnaam"
+				   + "        ,      p.tussenvoegsel"
+				   + "        ,      p.achternaam "
+				   + "        ,      r.person2_id     as partnerId"
+				   + "        ,      p2.roepnaam      as partnerRoepnaam"
+				   + "        ,      p2.tussenvoegsel as partnerTussenvoegsel"
+				   + "        ,      p2.achternaam    as partnerAchternaam"
 				   + "        from"
 				   + "               person   p"
 				   + "        ,      relation r "
+				   + "        ,      person   p2"
 				   + "        where"
 				   + "               r.person1_id = p.id"
 				   + "        and    r.partner    = true"
 				   + "        and    p.geslacht   = 'man'"
+				   + "        and    p2.id        = r.person2_id"
 				   + "       ) as s "
 				   + "left join"
 				   + "       relation r "
 				   + "on"
 				   + "       ("
-				   + "           r.person1_id = s.persoon_id"
-				   + "        or r.person1_id = s.partner_id"
+				   + "           r.person1_id = s.id"
+				   + "        or r.person1_id = s.partnerId"
 				   + "       ) "
 				   + "and    r.relatietype = 'Is kind van' "
 				   + "where  r.id is null";
 		System.out.println("DAO");
+		List<Stamboom> stamboom = em.createNativeQuery(sql, Stamboom.class).getResultList();
+/*
 		BigInteger hulp = (BigInteger) em.createNativeQuery(sql).getSingleResult();
 		System.out.println(hulp);
 		Long result = hulp.longValue();
 		System.out.println(result);
-		return result;
+*/
+		return stamboom;
 	}
 	
 	public List<Long> getKinderen(Long ouder) {

@@ -636,8 +636,31 @@ function setRelation() {
 
 function stamboom() {
 	activeMenuItem("stamboom");
+	$("#" + "mainpage").html("");
     $.get("rest/stamboom", function(data) {
-    	$("#" + "mainpage").html(data);
+    	$("<div id='stamboompage'></div>").appendTo("#mainpage");
+		for (var i = 0; i < data.length; i++) {
+			var j = i + 1;
+			$("<div id='"
+			+ data[0].id
+			+ "'><h"
+			+ j 
+			+ ">"
+			+ data[0].roepnaam 
+			+ " " 
+			+ data[0].tussenvoegsel 
+			+ " " 
+			+ data[0].achternaam
+			+ "<br>"
+			+ data[0].partnerRoepnaam 
+			+ " " 
+			+ data[0].partnerTussenvoegsel 
+			+ " " 
+			+ data[0].partnerAchternaam 
+			+ "</h" 
+			+ j 
+			+ "></div>").appendTo("#stamboompage");
+		}
     })
 }
 

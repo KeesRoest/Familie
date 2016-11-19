@@ -1,6 +1,8 @@
 package familieRest;
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -18,9 +20,9 @@ public class StamboomResource {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Stamboom getStamboom() {
+	public List<Stamboom> getStamboom() {
 		System.out.println("REST");
-		Stamboom stamboom = stamboomService.getStamboom();
+		List<Stamboom> stamboom = stamboomService.getStamboom();
 		return stamboom;
 	}
 }
