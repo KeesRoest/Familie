@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.swing.JOptionPane;
 
 import pojo.Person;
 
@@ -47,5 +48,19 @@ public class PersonDAO {
 			return new Boolean(true);
 		}
 	}
-
+	
+	public void updatePerson(Person person) {
+/*		((PersonDAO) em.createQuery("UPDATE Person SET"
+				+ " geslacht = '" + person.getGeslacht() + "'"
+				+ " doopnaam = '" + person.getDoopnaam() + "'"
+				+ " WHERE id = " + id , Person.class)).updatePerson(id, person);*/
+		showMessage();
+		em.merge(person);
+		
+	}
+	
+	public void showMessage() {
+		JOptionPane.showMessageDialog(null, "PersonDAO");
+	}
+	
 }

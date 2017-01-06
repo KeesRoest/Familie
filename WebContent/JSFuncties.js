@@ -1,7 +1,7 @@
 /**
  * 
  */
-	function activeMenuItem(menuItem) {
+function activeMenuItem(menuItem) {
 	$("#topmenu .active").removeClass("active");
 	$("#" + menuItem).addClass("active");
 
@@ -115,7 +115,6 @@ function persoon(id) {
 			text += "<tr class=detailtr><td class=detailtd>Staat</td>		       <td class=detailtd>" + json.staat			+ "</td></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Land</td>		       <td class=detailtd>" + json.land				+ "</td></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Telefoon</td>	       <td class=detailtd>" + json.telefoon			+ "</td></tr>";
-			text += "<tr class=detailtr><th class=detailth >ID: </th><th class=detailth>" + json.id + "</th></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Geslacht</td>	       <td class=detailtd>" + json.geslacht 		+ "</td></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Geboortedatum</td>      <td class=detailtd>" + json.geboortedatum	+ "</td></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Geboorteplaats</td>     <td class=detailtd>" + json.geboorteplaats	+ "</td></tr>";
@@ -137,11 +136,11 @@ function relatie(id, text) {
 			var json = JSON.parse(this.responseText);
 			text += "<tr class=detailtr><td class=detailtd>Burgerlijke staat : </td><td class=detailtd>" + json.relatieType;
 			partner(id, text);
-			text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
+			text += '<tr><td><button id ="wijzigen" onClick="displayPersgeg(' + id + ')" type="button">Wijzigen</button></td></tr></table>';
 			document.getElementById("mainpage").innerHTML = text;
 		} else if (this.readyState == 4 && this.status == 412) {
 			text += "<tr class=detailtr><td class=detailtd>Burgerlijke staat : </td><td class=detailtd>Ongehuwd</td></tr>";
-			text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
+			text += '<tr><td><button id ="wijzigen" onClick="displayPersgeg(' + id + ')" type="button">Wijzigen</button></td></tr></table>';
 			document.getElementById("mainpage").innerHTML = text;
 		}
 	}
@@ -157,7 +156,7 @@ function partner(id, text) {
 			var json = JSON.parse(this.responseText);
 			text += " : " + json.roepnaam + " "
 					+ json.tussenvoegsel + " " + json.achternaam + "</td></tr>";
-			text += '<tr><td><button type="button">Wijzigen</button></td></tr></table>';
+			text += '<tr><td><button id ="wijzigen" onClick="displayPersgeg(' + id + ')" type="button">Wijzigen</button></td></tr></table>';
 			document.getElementById("mainpage").innerHTML = text;
 		}
 	}
@@ -312,7 +311,7 @@ function checkPersGeg(id) {
 			{document.getElementById("foutPassword").innerHTML = "Wachtwoord moet minimaal 6 karakters bevatten.";
 			return "1";
 			break;
-			}
+		}
 		break;
     case "password2":
     	document.getElementById("foutPassword2").innerHTML = "";
@@ -342,6 +341,7 @@ function controlePersgeg() {
 	var geboorteplaats = document.getElementById("geboorteplaats").value;
 	var overlijdensdatum = document.getElementById("overlijdensdatum").value;
 	if (overlijdensdatum != "" & overlijdensdatum != null){
+		alert("Overlijdensdatum ingevuld")
 		overlijdensdatumIngevuld = true;
     	document.getElementById("foutStraatnaam").innerHTML = "";
     	document.getElementById("foutHuisnr").innerHTML = "";
@@ -358,17 +358,13 @@ function controlePersgeg() {
 	var password = document.getElementById("password").value;
 	var password2 = document.getElementById("password2").value;
 	if (overlijdensdatumIngevuld == false){
-		if (password2 != password){
-			document.getElementById("foutPassword").innerHTML = "'Wachtwoord' en 'Herhaal wachtwoord' moeten gelijk zijn.";
-			id = "password";
-			fout = true;
-		}
-		if (checkPersGeg("password2") == "1"){
+	if (checkPersGeg("password2") == "1"){
 			id = "password2";
 			fout = true;
 		}
 		if (password2 != password){
-			document.getElementById("foutPassword").innerHTML = "'Wachtwoord' en 'Herhaal wachtwoord' moeten gelijk zijn.";
+			alert("Wachtwoorden ongelijk")
+			document.getElementById("foutPassword2").innerHTML = "'Wachtwoord' en 'Herhaal wachtwoord' moeten gelijk zijn.";
 			id = "password";
 			fout = true;
 		}
@@ -544,6 +540,154 @@ function setPersgeg() {
 	xhttp.open("POST", "rest/person/add", true);
 	xhttp.setRequestHeader("Content-Type", "application/json");
 	xhttp.send(JSON.stringify({
+		geslacht : geslacht,
+		doopnaam : doopnaam,
+		roepnaam : roepnaam,
+		tussenvoegsel : tussenvoegsel,
+		achternaam : achternaam,
+		straatnaam : straatnaam,
+		huisnr : huisnr,
+		huisnrtoev : huisnrtoev,
+		postcode : postcode,
+		plaatsnaam : plaatsnaam,
+		staat : staat,
+		land : land,
+		telefoon : telefoon,
+		geboortedatum : geboortedatum,
+		geboorteplaats : geboorteplaats,
+		overlijdensdatum : overlijdensdatum,
+		email : email,
+		password : password
+	}));
+}
+
+function displayPersgeg(id) {
+    $.get("persGeg.html", function(data) {
+    	$("#" + "mainpage").html(data);
+    });
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var json = JSON.parse(this.responseText);
+			document.getElementById("geslacht").value 	 	  = json.geslacht;
+			document.getElementById("doopnaam").value 	 	  = json.doopnaam;
+			document.getElementById("roepnaam").value		  = json.roepnaam;
+			document.getElementById("tussenvoegsel").value	  = json.tussenvoegsel;
+			document.getElementById("achternaam").value		  = json.achternaam;
+			document.getElementById("straatnaam").value		  = json.straatnaam;
+			document.getElementById("huisnr").value			  = json.huisnr ;
+			document.getElementById("huisnrtoev").value		  = json.huisnrtoev;
+			document.getElementById("postcode").value		  = json.postcode;
+			document.getElementById("plaatsnaam").value		  = json.plaatsnaam;
+			document.getElementById("staat").value			  = json.staat;
+			document.getElementById("land").value			  = json.land;
+			document.getElementById("telefoon").value		  = json.telefoon;
+			var arr = json.geboortedatum.split('-');
+			var datum = arr[2] + "-" + arr[1] + "-" + arr[0];
+			document.getElementById("geboortedatum").value	  = datum;
+			document.getElementById("geboorteplaats").value	  = json.geboorteplaats;
+			datum = "";
+			if (json.overlijdensdatum != ""){
+				arr = json.overlijdensdatum.split('-');
+				datum = arr[2] + "-" + arr[1] + "-" + arr[0];
+			}
+			document.getElementById("overlijdensdatum").value = datum;
+			document.getElementById("email").value			  = json.email;
+			document.getElementById("password").value		  = json.password;
+			document.getElementById('opslaan').setAttribute('onclick','updatePersgeg(' + id + ')');
+		}
+	}
+	xhttp.open("GET", "rest/person/one/" + id, true);
+	xhttp.send();
+}
+
+function updatePersgeg(id) {
+	if (controlePersgeg() == true) {
+		return;
+	}
+/*
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		alert ("readyState:'" + this.readyState + "' status:'" + this.status + "'");
+		if (this.readyState == 4 && this.status == 200) {
+			var json = JSON.parse(this.responseText);
+			var geslachtOud 	 	  = json.geslacht;
+			var doopnaamOud		 	  = json.doopnaam;
+			var roepnaamOud			  = json.roepnaam;
+			var tussenvoegselOud	  = json.tussenvoegsel;
+			var achternaamOud		  = json.achternaam;
+			var straatnaamOud		  = json.straatnaam;
+			var huisnrOud			  = json.huisnr ;
+			var huisnrtoevOud		  = json.huisnrtoev;
+			var postcodeOud			  = json.postcode;
+			var plaatsnaamOud		  = json.plaatsnaam;
+			var staatOud			  = json.staat;
+			var landOud				  = json.land;
+			var telefoonOud			  = json.telefoon;
+			var geboortedatumOud	  = json.geboortedatum;
+			var geboorteplaatsOud	  = json.geboorteplaats;
+			var overlijdensdatumOud	  = json.overlijdensdatum;
+			var emailOud			  = json.email;
+			var passwordOud			  = json.password;
+		}
+		else{alert("NIET GEVONDEN");
+		}
+	}
+	alert("Id:" + id);
+	xhttp.open("GET", "rest/person/one/" + id, true);
+	xhttp.send();
+*/
+	var geslacht = document.getElementById("geslacht").value;
+	var doopnaam = document.getElementById("doopnaam").value;
+	var roepnaam = document.getElementById("roepnaam").value;
+	var tussenvoegsel = document.getElementById("tussenvoegsel").value;
+	var achternaam = document.getElementById("achternaam").value;
+	var straatnaam = document.getElementById("straatnaam").value;
+	var huisnr = document.getElementById("huisnr").value;
+	var huisnrtoev = document.getElementById("huisnrtoev").value;
+	var postcode = document.getElementById("postcode").value;
+	var plaatsnaam = document.getElementById("plaatsnaam").value;
+	var staat = document.getElementById("staat").value;
+	var land = document.getElementById("land").value;
+	var telefoon = document.getElementById("telefoon").value;
+	var geboortedatum = document.getElementById("geboortedatum").value;
+	var geboorteplaats = document.getElementById("geboorteplaats").value;
+	var overlijdensdatum = document.getElementById("overlijdensdatum").value;
+	var email = document.getElementById("email").value;
+	var password = document.getElementById("password").value;
+	
+/*	if(roepnaam != roepnaamOud 
+	   || achternaam != achternaamOud
+	   || geboortedatum != geboortedatumOud){
+		 Oude persoon verwijderen, nieuwe toevoegen, evt relaties aanpassen 
+	}
+*/
+	
+	if (overlijdensdatum != ""){
+    	Straatnaam 	= "";
+    	Huisnr		= "";
+    	Huisnrtoev	= "";
+    	Postcode	= "";
+    	Plaatsnaam	= "";
+    	Staat		= "";
+    	Land		= "";
+    	Telefoon	= "";
+    	Email		= "";
+    	Password	= "";
+	}
+	
+	alert("update persgeg van '" + id + "'");
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 204) {
+			alert("Persoon bijgewerkt");
+		}
+	}
+	xhttp.open("POST", "rest/person/update", true);
+	xhttp.setRequestHeader("Content-Type", "application/json");
+	xhttp.send(JSON.stringify({
+		/*id : id,*/
 		geslacht : geslacht,
 		doopnaam : doopnaam,
 		roepnaam : roepnaam,
