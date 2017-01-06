@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
 
 import dao.PersonDAO;
@@ -18,12 +17,11 @@ public class PersonService {
 	private PersonDAO personDAO;
 	
 	public void addPerson(Person person) {
-		showMessage("Add");
 		personDAO.savePerson(person);
 	}
 
 	public void updatePerson(Person person) {
-		showMessage("UPDATE");
+		System.out.println("update");
 		personDAO.updatePerson(person);
 	}
 
@@ -40,10 +38,6 @@ public class PersonService {
 	public Boolean existPerson(Person person) {
 		Boolean result = personDAO.existPerson(person);
 		return result;
-	}
-	
-	public void showMessage(String msg) {
-		JOptionPane.showMessageDialog(null, msg);
 	}
 	
 }

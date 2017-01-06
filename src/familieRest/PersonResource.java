@@ -3,7 +3,6 @@ package familieRest;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.swing.JOptionPane;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -57,16 +56,10 @@ public class PersonResource {
 	@Path("/update")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void updatePerson(Person person) {
-    	showMessage();
     	if (personService.existPerson(person) == true) {
     		personService.updatePerson(person);
     		System.out.println("Updated a person with firstname " + person.getRoepnaam() + " and with lastname " + person.getAchternaam());
     	}
 	}
-    
-	public void showMessage() {
-		JOptionPane.showMessageDialog(null, "PersonResource");
-	}
-	
 }
 
