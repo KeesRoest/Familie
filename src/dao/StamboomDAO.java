@@ -1,8 +1,6 @@
 package dao;
 
 
-import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -26,7 +24,8 @@ public class StamboomDAO {
 				   + ",      s.partnerId"
 				   + ",      s.partnerRoepnaam"
 				   + ",      s.partnerTussenvoegsel"
-				   + ",      s.partnerAchternaam "
+				   + ",      s.partnerAchternaam"
+				   + ",      0 as parentId "
 				   + "from "
 				   + "       ("
 				   + "        select "
@@ -58,31 +57,56 @@ public class StamboomDAO {
 				   + "and    r.relatietype = 'Is kind van' "
 				   + "where  r.id is null";
 		System.out.println("DAO");
+		@SuppressWarnings("unchecked")
 		List<Stamboom> stamboom = em.createNativeQuery(sql, Stamboom.class).getResultList();
-/*
-		BigInteger hulp = (BigInteger) em.createNativeQuery(sql).getSingleResult();
-		System.out.println(hulp);
-		Long result = hulp.longValue();
-		System.out.println(result);
-*/
 		return stamboom;
 	}
 	
-	public List<Long> getKinderen(Long ouder) {
-		String sql = "select r.person1_id from relation r where r.person2_id = "
-				   + ouder
-				   + " and r.relatietype = 'Is kind van'";
-		List<BigInteger> hulp = (List<BigInteger>) em.createNativeQuery(sql).getResultList();
-		List<Long> result = new ArrayList<Long>();
-		Long waarde;
-		for (BigInteger id : hulp) {
-			waarde = id.longValue();
-			result.add(waarde);
+	public List<Stamboom> getKinderen(List<Stamboom> ouders) {
+		StringBuilder sbOuderIds = new StringBuilder();
+		for (Stamboom ouder : ouders) {
+			sbOuderIds.append(ouder.getId() + " ");
 		}
-		for (Long id : result) {
-			System.out.println(id);
-		}
-		return result;
+		String ouderIds = sbOuderIds.toString().trim().replaceAll(" ", ", ");
+		String sql = "select "
+				   + "       p.id"
+				   + ",      p.roepnaam"
+				   + ",      p.tussenvoegsel"
+				   + ",      p.achternaam"
+				   + ",      r2.id            as partnerId"
+				   + ",      r2.roepnaam      as partnerRoepnaam"
+				   + ",      r2.tussenvoegsel as partnerTussenvoegsel"
+				   + ",      r2.achternaam    as partnerAchternaam"
+				   + ",      r.person2_id     as parentId "
+				   + "from"
+				   + "       person   p "
+				   + "inner join"
+				   + "       relation r "
+				   + "on"
+				   + "       r.person1_id  = p.id "
+				   + "and    r.relatietype = 'Is kind van' "
+				   + "and    r.person2_id  in (" + ouderIds + ") "
+				   + "left join"
+				   + "       ("
+				   + "        select"
+				   + "               r.person1_id"
+				   + "        ,      r.partner"
+				   + "        ,      p.id"
+				   + "        ,      p.roepnaam"
+				   + "        ,      p.tussenvoegsel"
+				   + "        ,      p.achternaam"
+				   + "        from"
+				   + "               relation r"
+				   + "        ,      person   p"
+				   + "        where"
+				   + "               p.id = r.person2_id"
+				   + "       ) r2 "
+				   + "on"
+				   + "       r2.person1_id = p.id "
+				   + "and    r2.partner    = true";
+		@SuppressWarnings("unchecked")
+		List<Stamboom> stamboom = em.createNativeQuery(sql, Stamboom.class).getResultList();
+		return stamboom;
 	}
 
 }

@@ -756,27 +756,35 @@ function stamboom() {
 	$("#" + "mainpage").html("");
     $.get("rest/stamboom", function(data) {
     	$("<div id='stamboompage'></div>").appendTo("#mainpage");
+    	$("<div id='p0'></div>").appendTo("#stamboompage");
+    	var vorigParentId = 0;
+    	var j = 1;
 		for (var i = 0; i < data.length; i++) {
-			var j = i + 1;
-			$("<div id='"
-			+ data[0].id
+			if (data[i].parentId != vorigParentId) {
+				j = j + 1
+				vorigParentId = data[i].parentId
+		    	$("<div id='p" + data[i].parentId+ "'></div>").appendTo("#stamboompage")
+			}
+			$("<div class='ib' id='"
+			+ data[i].id
 			+ "'><h"
 			+ j 
 			+ ">"
-			+ data[0].roepnaam 
+			+ data[i].roepnaam 
 			+ " " 
-			+ data[0].tussenvoegsel 
+			+ data[i].tussenvoegsel 
 			+ " " 
-			+ data[0].achternaam
+			+ data[i].achternaam
 			+ "<br>"
-			+ data[0].partnerRoepnaam 
+			+ data[i].partnerRoepnaam 
 			+ " " 
-			+ data[0].partnerTussenvoegsel 
+			+ data[i].partnerTussenvoegsel 
 			+ " " 
-			+ data[0].partnerAchternaam 
+			+ data[i].partnerAchternaam 
 			+ "</h" 
 			+ j 
-			+ "></div>").appendTo("#stamboompage");
+			+ "></div>").appendTo("#p"
+			+ data[i].parentId);
 		}
     })
 }

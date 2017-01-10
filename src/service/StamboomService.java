@@ -17,16 +17,12 @@ public class StamboomService {
 	public List<Stamboom> getStamboom() {
 		System.out.println("Service");
 		List<Stamboom> ouders = stamboomDAO.getFamilieOudste();
-		return ouders;
-/*
-		List<Long> ouders = new ArrayList<Long>();
-		ouders.add(familieOudsteID);
-		for (Long ouder : ouders) {
-			stamboomDAO.getKinderen(ouder);
+		List<Stamboom> stamboom = ouders;
+		while (ouders.size() != 0) {
+			ouders = stamboomDAO.getKinderen(ouders);
+			stamboom.addAll(ouders);
 		}
-		Stamboom stamboom = null;
 		return stamboom;
-*/
 	}
 	
 }

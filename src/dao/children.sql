@@ -7,6 +7,7 @@ select
 ,      r2.roepnaam      as partnerRoepnaam
 ,      r2.tussenvoegsel as partnerTussenvoegsel
 ,      r2.achternaam    as partnerAchternaam
+,      r.person2_id     as parentId
 from
        person   p
 inner join
@@ -14,7 +15,7 @@ inner join
 on
        r.person1_id  = p.id
 and    r.relatietype = 'Is kind van'
-and    r.person2_id  = 1001
+and    r.person2_id  in (1001)
 left join
        (
         select

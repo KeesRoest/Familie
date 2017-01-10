@@ -262,8 +262,31 @@ menu li ul {
    float:left; 
 }
 /* Stamboom */
-#stamboompage h1 {
+#stamboompage {
 	color:black;
-	border: solid 2px;
+	width:100%;
+	margin:auto;
+	text-align: center;
+}
+#stamboompage div{
+	color:black;
+	margin:auto;
+	text-align: center;
 }
 
+#stamboompage div h1 {
+	color:black;
+	width:100%;
+	margin:auto;
+	text-align: center;
+}
+#stamboompage div h2 {
+	color:black;
+	margin:auto;
+	text-align: center;
+}
+.ib {
+	display: inline-block;
+	margin:auto;
+	border: solid 1px;
+}
