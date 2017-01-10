@@ -761,11 +761,12 @@ function stamboom() {
     	var j = 1;
 		for (var i = 0; i < data.length; i++) {
 			if (data[i].parentId != vorigParentId) {
+		    	$("<div id='p" + data[i].parentId+ "'></div>").appendTo("#p" + vorigParentId)
+//		    	$("<div id='p" + data[i].parentId+ "'></div>").appendTo("#stamboompage")
 				j = j + 1
 				vorigParentId = data[i].parentId
-		    	$("<div id='p" + data[i].parentId+ "'></div>").appendTo("#stamboompage")
 			}
-			$("<div class='ib' id='"
+			$("<div id='"
 			+ data[i].id
 			+ "'><h"
 			+ j 

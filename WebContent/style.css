@@ -268,25 +268,15 @@ menu li ul {
 	margin:auto;
 	text-align: center;
 }
-#stamboompage div{
-	color:black;
-	margin:auto;
-	text-align: center;
-}
-
-#stamboompage div h1 {
+#stamboompage h1{
 	color:black;
 	width:100%;
 	margin:auto;
 	text-align: center;
 }
-#stamboompage div h2 {
+#stamboompage h2{
 	color:black;
+	width:100%;
 	margin:auto;
 	text-align: center;
-}
-.ib {
-	display: inline-block;
-	margin:auto;
-	border: solid 1px;
 }
