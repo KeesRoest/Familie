@@ -756,20 +756,26 @@ function stamboom() {
 	$("#" + "mainpage").html("");
     $.get("rest/stamboom", function(data) {
     	$("<div id='stamboompage'></div>").appendTo("#mainpage");
-    	$("<div id='p0'></div>").appendTo("#stamboompage");
     	var vorigParentId = 0;
     	var j = 1;
+    	$("<table id='t"
+		    	+ vorigParentId
+		    	+ "'></table>").appendTo("#stamboompage");
+    	$("</tr><tr id='p" + vorigParentId + "'></tr>").appendTo("#t" + vorigParentId)
 		for (var i = 0; i < data.length; i++) {
 			if (data[i].parentId != vorigParentId) {
-		    	$("<div id='p" + data[i].parentId+ "'></div>").appendTo("#p" + vorigParentId)
-//		    	$("<div id='p" + data[i].parentId+ "'></div>").appendTo("#stamboompage")
+		    	$("<table id='t"
+		    	+ data[i].parentId
+		    	+ "'></table>").appendTo("#" + data[i].parentId);
+		    	$("</tr><tr id='p" + data[i].parentId + "'></tr>").appendTo("#t" + data[i].parentId)
 				j = j + 1
 				vorigParentId = data[i].parentId
 			}
-			$("<div id='"
+			$("<td id='"
 			+ data[i].id
-			+ "'><h"
-			+ j 
+			+ "'>"
+			+ "<h"
+			+ j
 			+ ">"
 			+ data[i].roepnaam 
 			+ " " 
@@ -784,9 +790,10 @@ function stamboom() {
 			+ data[i].partnerAchternaam 
 			+ "</h" 
 			+ j 
-			+ "></div>").appendTo("#p"
+			+ ">"
+			+ "</td>").appendTo("#p"
 			+ data[i].parentId);
-		}
+			}
     })
 }
 

@@ -273,8 +273,23 @@ menu li ul {
 	width:100%;
 	margin:auto;
 	text-align: center;
+	border: solid 1px
 }
 #stamboompage h2{
+	color:black;
+	width:100%;
+	margin:auto;
+	text-align: center;
+	border: solid 1px
+}
+#stamboompage h3{
+	color:black;
+	width:100%;
+	margin:auto;
+	text-align: center;
+	border: solid 1px
+}
+#stamboompage table{
 	color:black;
 	width:100%;
 	margin:auto;

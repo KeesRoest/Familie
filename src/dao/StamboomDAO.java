@@ -74,9 +74,9 @@ public class StamboomDAO {
 				   + ",      p.tussenvoegsel"
 				   + ",      p.achternaam"
 				   + ",      r2.id            as partnerId"
-				   + ",      r2.roepnaam      as partnerRoepnaam"
-				   + ",      r2.tussenvoegsel as partnerTussenvoegsel"
-				   + ",      r2.achternaam    as partnerAchternaam"
+				   + ",      coalesce(r2.roepnaam, '')      as partnerRoepnaam"
+				   + ",      coalesce(r2.tussenvoegsel, '') as partnerTussenvoegsel"
+				   + ",      coalesce(r2.achternaam, '')    as partnerAchternaam"
 				   + ",      r.person2_id     as parentId "
 				   + "from"
 				   + "       person   p "
@@ -103,7 +103,10 @@ public class StamboomDAO {
 				   + "       ) r2 "
 				   + "on"
 				   + "       r2.person1_id = p.id "
-				   + "and    r2.partner    = true";
+				   + "and    r2.partner    = true "
+				   + "order by"
+				   + "       r.person2_id "
+				   + ",      p.id";
 		@SuppressWarnings("unchecked")
 		List<Stamboom> stamboom = em.createNativeQuery(sql, Stamboom.class).getResultList();
 		return stamboom;
