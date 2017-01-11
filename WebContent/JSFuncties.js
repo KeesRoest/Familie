@@ -757,7 +757,6 @@ function stamboom() {
     $.get("rest/stamboom", function(data) {
     	$("<div id='stamboompage'></div>").appendTo("#mainpage");
     	var vorigParentId = 0;
-    	var j = 1;
     	$("<table id='t"
 		    	+ vorigParentId
 		    	+ "'></table>").appendTo("#stamboompage");
@@ -768,14 +767,13 @@ function stamboom() {
 		    	+ data[i].parentId
 		    	+ "'></table>").appendTo("#" + data[i].parentId);
 		    	$("</tr><tr id='p" + data[i].parentId + "'></tr>").appendTo("#t" + data[i].parentId)
-				j = j + 1
 				vorigParentId = data[i].parentId
 			}
 			$("<td id='"
 			+ data[i].id
 			+ "'>"
 			+ "<h"
-			+ j
+			+ data[i].level
 			+ ">"
 			+ data[i].roepnaam 
 			+ " " 
@@ -789,7 +787,7 @@ function stamboom() {
 			+ " " 
 			+ data[i].partnerAchternaam 
 			+ "</h" 
-			+ j 
+			+ data[i].level
 			+ ">"
 			+ "</td>").appendTo("#p"
 			+ data[i].parentId);

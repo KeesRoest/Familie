@@ -26,10 +26,12 @@ public class Stamboom  implements Serializable {
 	
 	private Long parentId;
 	
+	private Long level;
+	
 	public Stamboom() {
 		
 	}
-	public Stamboom(Long id, String roepnaam, String tussenvoegsel, String achternaam, Long partnerId, String partnerRoepnaam, String partnerTussenvoegsel, String partnerAchternaam, Long parentId) {
+	public Stamboom(Long id, String roepnaam, String tussenvoegsel, String achternaam, Long partnerId, String partnerRoepnaam, String partnerTussenvoegsel, String partnerAchternaam, Long parentId, Long level) {
 		setId(id);
 		setRoepaam(roepnaam);
 		setTussenvoegsel(tussenvoegsel);
@@ -39,6 +41,7 @@ public class Stamboom  implements Serializable {
 		setPartnerTussenvoegsel(partnerTussenvoegsel);
 		setPartnerAchternaam(partnerAchternaam);
 		setParentId(parentId);
+		setLevel(level);
 	}
 
 	public void setId(Long id) {
@@ -111,6 +114,14 @@ public class Stamboom  implements Serializable {
 	
 	public Long getParentId() {
 		return parentId;
+	}
+
+	public void setLevel(Long level) {
+		this.level = level;
+	}
+	
+	public Long getLevel() {
+		return level;
 	}
 
 }

@@ -25,7 +25,8 @@ public class StamboomDAO {
 				   + ",      s.partnerRoepnaam"
 				   + ",      s.partnerTussenvoegsel"
 				   + ",      s.partnerAchternaam"
-				   + ",      0 as parentId "
+				   + ",      0 as parentId"
+				   + ",      1 as level "
 				   + "from "
 				   + "       ("
 				   + "        select "
@@ -67,17 +68,19 @@ public class StamboomDAO {
 		for (Stamboom ouder : ouders) {
 			sbOuderIds.append(ouder.getId() + " ");
 		}
+		Long level = ouders.get(0).getLevel() + 1;
 		String ouderIds = sbOuderIds.toString().trim().replaceAll(" ", ", ");
 		String sql = "select "
 				   + "       p.id"
 				   + ",      p.roepnaam"
 				   + ",      p.tussenvoegsel"
 				   + ",      p.achternaam"
-				   + ",      r2.id            as partnerId"
+				   + ",      r2.id                          as partnerId"
 				   + ",      coalesce(r2.roepnaam, '')      as partnerRoepnaam"
 				   + ",      coalesce(r2.tussenvoegsel, '') as partnerTussenvoegsel"
 				   + ",      coalesce(r2.achternaam, '')    as partnerAchternaam"
-				   + ",      r.person2_id     as parentId "
+				   + ",      r.person2_id                   as parentId"
+				   + ",      " + level +                  " as level " 
 				   + "from"
 				   + "       person   p "
 				   + "inner join"

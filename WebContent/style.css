@@ -289,9 +289,19 @@ menu li ul {
 	text-align: center;
 	border: solid 1px
 }
+#stamboompage h4{
+	color:black;
+	width:100%;
+	margin:auto;
+	text-align: center;
+	border: solid 1px
+}
 #stamboompage table{
 	color:black;
 	width:100%;
 	margin:auto;
 	text-align: center;
+}
+#stamboompage td{
+	vertical-align:top;
 }
