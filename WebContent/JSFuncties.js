@@ -124,7 +124,7 @@ function persoon(id) {
 		        	                                                                                    + json.huisnr     + " "
 			                                                                                            + json.huisnrtoev        + "</td></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Postcode/woonplaats</td><td class=detailtd>" + json.postcode + " "
-			                                                                                            + json.plaatsnaam
+			                                                                                            + json.plaatsnaam       + "</td></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Staat</td>		       <td class=detailtd>" + json.staat			+ "</td></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Land</td>		       <td class=detailtd>" + json.land				+ "</td></tr>";
 			text += "<tr class=detailtr><td class=detailtd>Telefoon</td>	       <td class=detailtd>" + json.telefoon			+ "</td></tr>";
