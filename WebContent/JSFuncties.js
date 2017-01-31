@@ -760,13 +760,13 @@ function stamboom() {
     	$("<table id='t"
 		    	+ vorigParentId
 		    	+ "'></table>").appendTo("#stamboompage");
-    	$("</tr><tr id='p" + vorigParentId + "'></tr>").appendTo("#t" + vorigParentId)
+    	$("<tr id='p" + vorigParentId + "'></tr>").appendTo("#t" + vorigParentId)
 		for (var i = 0; i < data.length; i++) {
 			if (data[i].parentId != vorigParentId) {
 		    	$("<table id='t"
 		    	+ data[i].parentId
 		    	+ "'></table>").appendTo("#" + data[i].parentId);
-		    	$("</tr><tr id='p" + data[i].parentId + "'></tr>").appendTo("#t" + data[i].parentId)
+		    	$("<tr id='p" + data[i].parentId + "'></tr>").appendTo("#t" + data[i].parentId)
 				vorigParentId = data[i].parentId
 			}
 			$("<td id='"
